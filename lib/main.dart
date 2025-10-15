@@ -16,7 +16,7 @@ class Orthodox extends StatefulWidget {
 
 class _OrthodoxState extends State<Orthodox> {
   String text = '';
-  final _controller = TextEditingController();
+  // final _controller = TextEditingController();
   bool isThems = false;
   @override
   void initState() {
@@ -45,14 +45,14 @@ class _OrthodoxState extends State<Orthodox> {
     });
   }
 
-  var _currentIndex = 1;
-  void activity(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+  // var _currentIndex = 1;
+  // void activity(int index) {
+  //   setState(() {
+  //     _currentIndex = index;
+  //   });
+  // }
 
-  void more_vert() {
+  void morevert() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MoreVert()),
@@ -65,42 +65,42 @@ class _OrthodoxState extends State<Orthodox> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> lists = [
-      Text(text.isEmpty ? 'No text entered' : text),
+    // List<Widget> lists = [
+    //   Text(text.isEmpty ? 'No text entered' : text),
 
-      Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 50.0, right: 50.0),
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                labelText: 'User name',
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _controller.clear(); // Clear text field
-                    });
-                  },
-                  icon: Icon(Icons.clear),
-                ),
-              ),
-            ),
-          ),
-          ElevatedButton(
-            child: Text('Btn'),
-            onPressed: () {
-              setState(() {
-                text = _controller.text;
-              });
-              setDatas();
-            },
-          ),
-        ],
-      ),
+    //   Column(
+    //     children: [
+    //       Padding(
+    //         padding: const EdgeInsets.only(left: 50.0, right: 50.0),
+    //         child: TextField(
+    //           controller: _controller,
+    //           decoration: InputDecoration(
+    //             labelText: 'User name',
+    //             suffixIcon: IconButton(
+    //               onPressed: () {
+    //                 setState(() {
+    //                   _controller.clear(); // Clear text field
+    //                 });
+    //               },
+    //               icon: Icon(Icons.clear),
+    //             ),
+    //           ),
+    //         ),
+    //       ),
+    //       ElevatedButton(
+    //         child: Text('Btn'),
+    //         onPressed: () {
+    //           setState(() {
+    //             text = _controller.text;
+    //           });
+    //           setDatas();
+    //         },
+    //       ),
+    //     ],
+    //   ),
 
-      Text('dfgata'),
-    ];
+    //   Text('dfgata'),
+    // ];
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
       debugShowCheckedModeBanner: false,
@@ -122,7 +122,7 @@ class _OrthodoxState extends State<Orthodox> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(
-                onPressed: more_vert,
+                onPressed: morevert,
                 icon: Icon(Icons.more_vert),
               ),
             ),
@@ -131,26 +131,26 @@ class _OrthodoxState extends State<Orthodox> {
           backgroundColor: Colors.deepOrange,
         ),
         drawer: Drawers(),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: activity,
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.airline_seat_legroom_normal),
-              label: 'mezmur',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.accessible_forward_rounded),
-              label: 'mezmgfhgur',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.access_alarms_outlined),
-              label: 'mezmurghg',
-            ),
-          ],
-        ),
-        body: lists[_currentIndex],
+        // bottomNavigationBar: BottomNavigationBar(
+        //   currentIndex: _currentIndex,
+        //   onTap: activity,
+        //   type: BottomNavigationBarType.fixed,
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.airline_seat_legroom_normal),
+        //       label: 'mezmur',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.accessible_forward_rounded),
+        //       label: 'mezmgfhgur',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.access_alarms_outlined),
+        //       label: 'mezmurghg',
+        //     ),
+        //   ],
+        // ),
+        body: Text('ssssss'),
       ),
     );
   }
