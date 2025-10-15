@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/drawer.dart';
+import 'package:orthodox/more_vert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -19,7 +20,6 @@ class _OrthodoxState extends State<Orthodox> {
   bool isThems = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getDatas();
   }
@@ -39,9 +39,6 @@ class _OrthodoxState extends State<Orthodox> {
     bool? them = prefs.getBool('isDartMode') ?? false;
     String? getText = prefsText.getString('str') ?? ' ';
 
-    print(them);
-    print(getText);
-
     setState(() {
       isThems = them;
       text = getText;
@@ -55,43 +52,54 @@ class _OrthodoxState extends State<Orthodox> {
     });
   }
 
+  void more_vert() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MoreVert()),
+    );
+    //     Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => MoreVert()),
+    // );
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> lists = [
-      Container(child: Text(text.isEmpty ? 'No text entered' : text)),
-      Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 50.0, right: 50.0),
-              child: TextField(
-                controller: _controller,
-                decoration: InputDecoration(
-                  labelText: 'User name',
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _controller.clear(); // Clear text field
-                      });
-                    },
-                    icon: Icon(Icons.clear),
-                  ),
+      Text(text.isEmpty ? 'No text entered' : text),
+
+      Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 50.0, right: 50.0),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                labelText: 'User name',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _controller.clear(); // Clear text field
+                    });
+                  },
+                  icon: Icon(Icons.clear),
                 ),
               ),
             ),
-            ElevatedButton(
-              child: Text('Btn'),
-              onPressed: () {
-                setState(() {
-                  text = _controller.text;
-                });
-                setDatas();
-              },
-            ),
-          ],
-        ),
+          ),
+          ElevatedButton(
+            child: Text('Btn'),
+            onPressed: () {
+              setState(() {
+                text = _controller.text;
+              });
+              setDatas();
+            },
+          ),
+        ],
       ),
-      Container(child: Text('dfgata')),
+
+      Text('dfgata'),
     ];
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
@@ -99,18 +107,23 @@ class _OrthodoxState extends State<Orthodox> {
       home: Scaffold(
         appBar: AppBar(
           actions: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Switch(
-                  value: isThems,
-                  onChanged: (value) {
-                    setState(() {
-                      isThems = value;
-                    });
-                    setDatas();
-                  },
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Switch(
+                value: isThems,
+                onChanged: (value) {
+                  setState(() {
+                    isThems = value;
+                  });
+                  setDatas();
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                onPressed: more_vert,
+                icon: Icon(Icons.more_vert),
               ),
             ),
           ],
