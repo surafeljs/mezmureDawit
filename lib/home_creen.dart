@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/Setting.dart';
 import 'package:orthodox/drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -53,6 +54,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           PopupMenuButton(
+            onSelected: (value) {
+              switch (value) {
+                case 'Setting':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Setting()),
+                  );
+                  break;
+                default:
+              }
+            },
             position: PopupMenuPosition.under,
             itemBuilder: (context) => [
               PopupMenuItem(
