@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/more_vert.dart';
 
 class Drawers extends StatefulWidget {
   const Drawers({super.key});
@@ -28,6 +29,12 @@ class _DrawersState extends State<Drawers> {
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 1'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MoreVert()),
+              );
+            },
           ),
           SizedBox(height: 20.0),
 
@@ -130,5 +137,14 @@ class _DrawersState extends State<Drawers> {
         ],
       ),
     );
+  }
+}
+
+class MoreVert extends StatelessWidget {
+  const MoreVert({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar());
   }
 }

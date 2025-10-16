@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/drawer.dart';
-import 'package:orthodox/more_vert.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -52,16 +52,12 @@ class _OrthodoxState extends State<Orthodox> {
   //   });
   // }
 
-  void morevert() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MoreVert()),
-    );
-    //     Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => MoreVert()),
-    // );
-  }
+  // void morevert() {
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => MoreVert()),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -101,9 +97,16 @@ class _OrthodoxState extends State<Orthodox> {
 
     //   Text('dfgata'),
     // ];
+    // void morevert() {
+    //   Navigator.of(
+    //     context,
+    //   ).pushReplacement(MaterialPageRoute(builder: (context) => MoreVert()));
+    // }
+
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
       debugShowCheckedModeBanner: false,
+
       home: Scaffold(
         appBar: AppBar(
           actions: [
@@ -119,12 +122,61 @@ class _OrthodoxState extends State<Orthodox> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                onPressed: morevert,
-                icon: Icon(Icons.more_vert),
-              ),
+            PopupMenuButton(
+              position: PopupMenuPosition.under,
+              onSelected: (result) {
+                switch (result) {
+                  case 'Setting':
+                    // print('ggggggg');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MoreVert(),
+                      ), // Make sure MoreVert is a valid widget
+                    );
+                    break;
+                  case 'Share':
+                    // Add share functionality
+                    break;
+                  case 'Rate':
+                    // Add rate functionality
+                    break;
+                  case 'More':
+                    // Add more apps functionality
+                    break;
+                }
+              },
+              menuPadding: EdgeInsets.only(right: 22.0, left: 8.0, top: 8.0),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 'Setting',
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Setting'),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'Share',
+                  child: ListTile(
+                    leading: Icon(Icons.share),
+                    title: Text('Share'),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'Rate',
+                  child: ListTile(
+                    leading: Icon(Icons.rate_review),
+                    title: Text('Rate us'),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'More',
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('More apps'),
+                  ),
+                ),
+              ],
             ),
           ],
 
