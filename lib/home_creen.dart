@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/drawer.dart';
-import 'package:orthodox/popup_menu.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isThems;
@@ -11,11 +11,33 @@ class HomeScreen extends StatefulWidget {
     required this.isThems,
     required this.onThemeChanged,
   });
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String text = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getText();
+  }
+
+  Future<void> getText() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? getText = prefs.getString('str') ?? ' ';
+    setState(() {
+      text = getText;
+    });
+  }
+
+  Future<void> setText() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('str', text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,37 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Switch(
               value: widget.isThems,
               onChanged: (value) {
-                setState(() {
-                  widget.onThemeChanged(value);
-                });
+                widget.onThemeChanged(value);
               },
             ),
           ),
           PopupMenuButton(
             position: PopupMenuPosition.under,
-            onSelected: (result) {
-              switch (result) {
-                case 'Setting':
-                  // print('ggggggg');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MoreVert(),
-                    ), // Make sure MoreVert is a valid widget
-                  );
-                  break;
-                case 'Share':
-                  // Add share functionality
-                  break;
-                case 'Rate':
-                  // Add rate functionality
-                  break;
-                case 'More':
-                  // Add more apps functionality
-                  break;
-              }
-            },
-            menuPadding: EdgeInsets.only(right: 22.0, left: 8.0, top: 8.0),
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 'Setting',
@@ -89,10 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
-
         backgroundColor: Colors.deepOrange,
       ),
-
       drawer: Drawers(),
     );
   }

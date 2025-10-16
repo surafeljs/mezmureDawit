@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/home_creen.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -16,26 +15,26 @@ class Orthodox extends StatefulWidget {
 
 class _OrthodoxState extends State<Orthodox> {
   bool isThems = false;
+
   @override
   void initState() {
     super.initState();
-    getDatas();
+    loadTheme();
   }
 
-  Future<void> setDatas(bool value) async {
+  Future<void> loadTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDark', isThems);
+    bool? themePref = prefs.getBool('isDartMode') ?? false;
     setState(() {
-      isThems = value;
+      isThems = themePref;
     });
   }
 
-  Future<void> getDatas() async {
+  Future<void> updateTheme(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? prefss = prefs.getBool('isDark') ?? false;
-
+    await prefs.setBool('isDartMode', value);
     setState(() {
-      isThems = prefss;
+      isThems = value;
     });
   }
 
@@ -44,8 +43,7 @@ class _OrthodoxState extends State<Orthodox> {
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
       debugShowCheckedModeBanner: false,
-
-      home: HomeScreen(isThems: isThems, onThemeChanged: setDatas),
+      home: HomeScreen(isThems: isThems, onThemeChanged: updateTheme),
     );
   }
 }
