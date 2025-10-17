@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/Setting.dart';
 
-class MoreVert extends StatelessWidget {
-  const MoreVert({super.key});
+class MoreVert extends StatefulWidget {
+  @override
+  State<MoreVert> createState() => _MoreVertState();
+}
 
+class _MoreVertState extends State<MoreVert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +23,7 @@ class MoreVert extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MoreVert(),
+                      builder: (context) => Setting(),
                     ), // Make sure MoreVert is a valid widget
                   );
                   break;

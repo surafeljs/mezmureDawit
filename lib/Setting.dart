@@ -7,15 +7,11 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool switchButton = false;
-  String titles = 'Setting';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
-        centerTitle: true,
-        title: Text(titles),
-      ),
+      appBar: AppBar(backgroundColor: Colors.deepOrange, centerTitle: true),
       body: SafeArea(
         bottom: false,
         child: Column(

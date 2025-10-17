@@ -29,12 +29,7 @@ class _DrawersState extends State<Drawers> {
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 1'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MoreVert()),
-              );
-            },
+            onTap: () {},
           ),
           SizedBox(height: 20.0),
 
