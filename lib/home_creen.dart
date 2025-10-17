@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/Setting.dart';
+import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -102,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.deepOrange,
       ),
       drawer: Drawers(),
+      body: Body(),
     );
   }
 }
