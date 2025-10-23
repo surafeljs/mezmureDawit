@@ -43,6 +43,7 @@ class _OrthodoxState extends State<Orthodox> {
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
       debugShowCheckedModeBanner: false,
+
       home: HomeScreen(isThems: isThems, onThemeChanged: updateTheme),
     );
   }

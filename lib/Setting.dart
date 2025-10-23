@@ -18,10 +18,14 @@ class _SettingState extends State<Setting> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
-                  child: Text('Dark mode', style: TextStyle(fontSize: 25.0)),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text('Dark mode', style: TextStyle(fontSize: 25.0)),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),

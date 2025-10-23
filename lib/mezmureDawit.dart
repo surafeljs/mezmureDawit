@@ -10,6 +10,6 @@ class MezmureDawit extends StatefulWidget {
 class _MezmureDawitState extends State<MezmureDawit> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector();
+    return Container();
   }
 }

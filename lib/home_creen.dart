@@ -55,6 +55,22 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 400.0,
+
+                    child: Text('share app'),
+                  );
+                },
+              );
+            },
+            icon: Icon(Icons.share),
+          ),
           PopupMenuButton(
             onSelected: (value) {
               switch (value) {

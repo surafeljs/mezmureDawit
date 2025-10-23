@@ -62,7 +62,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/mezmuredawit.json
+    - assets/data.json
     - assets/134009274249421277.jpg
   
 
@@ -78,10 +78,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
  
-  fonts:
-    - family: AbyssinicaSIL # This is the name you will use in your code
-      fonts:
-        - asset: assets/fonts/AbyssinicaSIL-Regular.ttf
+
   # fonts:
   #   - family: Schyler
   #     fonts:
