@@ -7,7 +7,8 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool switchButton = false;
-
+  Icon isdark = Icon(Icons.dark_mode);
+  bool? abc = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +30,21 @@ class _SettingState extends State<Setting> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
-                  child: Switch(
-                    onChanged: (value) {
+                  child: IconButton(
+                    onPressed: () {
                       setState(() {
-                        switchButton = value;
+                        bool nullCheck = abc ?? false;
+                        abc = !nullCheck;
+
+                        if (nullCheck) {
+                          isdark = Icon(Icons.dark_mode);
+                        } else {
+                          isdark = Icon(Icons.light_mode);
+                        }
                       });
+                      print(abc);
                     },
-                    value: switchButton,
+                    icon: isdark,
                   ),
                 ),
               ],

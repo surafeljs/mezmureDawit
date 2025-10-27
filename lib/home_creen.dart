@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:orthodox/Setting.dart';
 import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isThems;
@@ -20,24 +19,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String text = '';
-
+  Icon isdark = Icon(Icons.dark_mode);
+  bool? abc = false;
   @override
   void initState() {
     super.initState();
-    getText();
-  }
-
-  Future<void> getText() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? getText = prefs.getString('str') ?? ' ';
-    setState(() {
-      text = getText;
-    });
-  }
-
-  Future<void> setText() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('str', text);
   }
 
   @override
@@ -47,24 +33,36 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('መዝሙረ ዳዊት'),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Switch(
-              value: widget.isThems,
-              onChanged: (value) {
-                widget.onThemeChanged(value);
+            padding: EdgeInsetsGeometry.all(8),
+
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  widget.onThemeChanged(!widget.isThems);
+
+                  if (widget.isThems) {
+                    isdark = Icon(Icons.dark_mode);
+                  } else {
+                    isdark = Icon(Icons.light_mode);
+                  }
+                });
               },
+              icon: isdark,
             ),
           ),
+
           IconButton(
             onPressed: () {
               showModalBottomSheet(
+                useSafeArea: true,
+
                 context: context,
                 builder: (context) {
                   return SizedBox(
                     width: double.infinity,
                     height: 400.0,
 
-                    child: Text('share app'),
+                    child: Center(child: Text('share app')),
                   );
                 },
               );

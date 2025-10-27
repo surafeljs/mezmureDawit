@@ -11,6 +11,6 @@ class _BodyState extends State<Body> {
   bool isVisible = true;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center();
   }
 }
