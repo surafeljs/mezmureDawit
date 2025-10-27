@@ -33,24 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('መዝሙረ ዳዊት'),
         actions: [
           Padding(
-            padding: EdgeInsetsGeometry.all(8),
-
-            child: IconButton(
-              onPressed: () {
-                setState(() {
-                  widget.onThemeChanged(!widget.isThems);
-
-                  if (widget.isThems) {
-                    isdark = Icon(Icons.dark_mode);
-                  } else {
-                    isdark = Icon(Icons.light_mode);
-                  }
-                });
+            padding: const EdgeInsets.all(8.0),
+            child: Switch(
+              value: widget.isThems,
+              onChanged: (value) {
+                widget.onThemeChanged(value);
               },
-              icon: isdark,
             ),
           ),
-
           IconButton(
             onPressed: () {
               showModalBottomSheet(

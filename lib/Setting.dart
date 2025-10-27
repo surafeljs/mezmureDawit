@@ -7,8 +7,7 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool switchButton = false;
-  Icon isdark = Icon(Icons.dark_mode);
-  bool? abc = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,25 +25,6 @@ class _SettingState extends State<Setting> {
                   child: GestureDetector(
                     onTap: () {},
                     child: Text('Dark mode', style: TextStyle(fontSize: 25.0)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        bool nullCheck = abc ?? false;
-                        abc = !nullCheck;
-
-                        if (nullCheck) {
-                          isdark = Icon(Icons.dark_mode);
-                        } else {
-                          isdark = Icon(Icons.light_mode);
-                        }
-                      });
-                      print(abc);
-                    },
-                    icon: isdark,
                   ),
                 ),
               ],
