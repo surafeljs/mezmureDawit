@@ -37,6 +37,8 @@ dependencies:
   introduction_screen: ^4.0.0
   shared_preferences: ^2.5.3
   google_fonts: ^6.3.2
+  share_plus: ^12.0.1
+  file_picker: ^10.3.3
 
 dev_dependencies:
   flutter_test:
@@ -61,9 +63,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/data.json
-    - assets/134009274249421277.jpg
+  # assets:
+    
+   
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

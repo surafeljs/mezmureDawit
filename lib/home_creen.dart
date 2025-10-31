@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orthodox/Setting.dart';
 import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isThems;
@@ -54,20 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
           //   ),
           // ),
           IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                useSafeArea: true,
-
-                context: context,
-                builder: (context) {
-                  return SizedBox(
-                    width: double.infinity,
-                    height: 400.0,
-
-                    child: Center(child: Text('share app')),
-                  );
-                },
-              );
+            onPressed: () async {
+              await SharePlus.instance.share(ShareParams(text: 'shardgge'));
             },
             icon: Icon(Icons.share),
           ),
