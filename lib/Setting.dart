@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/body.dart';
 
 class Setting extends StatefulWidget {
   @override
@@ -6,7 +7,8 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  bool switchButton = false;
+  List<String> radio = ['ወደ ጎን ', 'ከላይ ወደታች'];
+  String? _selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,55 @@ class _SettingState extends State<Setting> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 30.0, top: 50.0),
+                      child: SizedBox(
+                        height: 50.0,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('የገጽ አቀማመጥ'),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ListTile(
+                                        title: GestureDetector(
+                                          onTap: () {},
+
+                                          child: Text('ወደ ጎን '),
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title: GestureDetector(
+                                          child: Text('ከላይ ወደታች '),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  actions: [
+                                    GestureDetector(
+                                      child: Text('Ok'),
+
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: Text(
+                            'የገጽ አቀማመጥ',
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
                       child: SizedBox(
                         height: 50.0,
                         child: Text('Share', style: TextStyle(fontSize: 20.0)),
