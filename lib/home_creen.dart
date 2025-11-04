@@ -3,6 +3,7 @@ import 'package:orthodox/Setting.dart';
 import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isThems;
@@ -20,12 +21,58 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Axis direction = Axis.vertical;
+
   String text = '';
   Icon isdark = Icon(Icons.dark_mode);
   bool? abc = false;
   @override
   void initState() {
+    getDate();
+
     super.initState();
+  }
+
+  Future<void> getDate() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? savedDirection = prefs.getString('direction');
+
+      if (savedDirection != null) {
+        setState(() {
+          if (savedDirection == 'Axis.horizontal') {
+            direction = Axis.horizontal;
+          } else {
+            direction = Axis.vertical;
+          }
+        });
+      }
+    } catch (e) {
+      print('Error loading direction: $e');
+    }
+  }
+
+  Future<void> setDate(Axis newDirection) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('direction', newDirection.toString());
+    } catch (e) {
+      print('Error saving direction: $e');
+    }
+  }
+
+  void horizontalDirection() {
+    setState(() {
+      direction = Axis.horizontal;
+    });
+    setDate(Axis.horizontal);
+  }
+
+  void verticalDirection() {
+    setState(() {
+      direction = Axis.vertical;
+    });
+    setDate(Axis.vertical);
   }
 
   @override
@@ -61,13 +108,19 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             icon: Icon(Icons.share),
           ),
+
           PopupMenuButton(
             onSelected: (value) {
               switch (value) {
                 case 'Setting':
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Setting()),
+                    MaterialPageRoute(
+                      builder: (context) => Setting(
+                        axisVerticalDirections: verticalDirection,
+                        axisHorizontalDirections: horizontalDirection,
+                      ),
+                    ),
                   );
                   break;
                 default:
@@ -109,7 +162,11 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.deepOrange,
       ),
       drawer: Drawers(),
-      body: Body(),
+      body: Body(
+        bodyBool: direction,
+        axisHorizontalDirection: horizontalDirection,
+        axisVerticalDirection: verticalDirection,
+      ),
     );
   }
 }

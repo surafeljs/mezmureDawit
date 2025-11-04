@@ -1,10 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/rendering.dart';
 
 class Body extends StatefulWidget {
+  final Axis bodyBool;
+  final VoidCallback axisHorizontalDirection;
+  final VoidCallback axisVerticalDirection;
+
+  const Body({
+    super.key,
+    required this.bodyBool,
+    required this.axisVerticalDirection,
+    required this.axisHorizontalDirection,
+  });
   @override
   State<Body> createState() => _BodyState();
 }
@@ -225,7 +231,6 @@ class _BodyState extends State<Body> {
     },
   ];
   // Axis direction = Axis.vertical;
-  bool directionBool = true;
 
   @override
   Widget build(BuildContext context) {
@@ -253,15 +258,21 @@ class _BodyState extends State<Body> {
     //   }
     //   print(img);
     // }
-
+    print('${widget.bodyBool}kkkkkkkkkkkkkkk');
     return PageView.builder(
-      scrollDirection: directionBool ? Axis.vertical : Axis.horizontal,
+      scrollDirection: widget.bodyBool,
       itemCount: mezmureDawit.length,
       itemBuilder: (context, index) {
         return Container(
           child: Column(
             spacing: 15,
             children: [
+              // Container(
+              //   child: GestureDetector(
+              //     onTap: widget.axisHorizontalDirection,
+              //     child: Text('horizontal'),
+              //   ),
+              // ),
               Expanded(
                 flex: 0,
                 child: ListTile(

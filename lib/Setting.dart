@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:orthodox/body.dart';
 
 class Setting extends StatefulWidget {
+  final VoidCallback axisHorizontalDirections;
+  final VoidCallback axisVerticalDirections;
+
+  Setting({
+    super.key,
+    required this.axisVerticalDirections,
+    required this.axisHorizontalDirections,
+  });
+
   @override
   State<Setting> createState() => _SettingState();
 }
@@ -52,13 +61,15 @@ class _SettingState extends State<Setting> {
                                     children: [
                                       ListTile(
                                         title: GestureDetector(
-                                          onTap: () {},
+                                          onTap:
+                                              widget.axisHorizontalDirections,
 
                                           child: Text('ወደ ጎን '),
                                         ),
                                       ),
                                       ListTile(
                                         title: GestureDetector(
+                                          onTap: widget.axisVerticalDirections,
                                           child: Text('ከላይ ወደታች '),
                                         ),
                                       ),
