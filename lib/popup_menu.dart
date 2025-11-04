@@ -20,12 +20,12 @@ class _MoreVertState extends State<MoreVert> {
               switch (result) {
                 case 'Setting':
                   // print('ggggggg');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Setting(),
-                    ), // Make sure MoreVert is a valid widget
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => Setting(),
+                  //   ), // Make sure MoreVert is a valid widget
+                  // );
                   break;
                 case 'Share':
                   // Add share functionality
