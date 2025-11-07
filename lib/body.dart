@@ -18,7 +18,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   // String? img;
   // String? _display;
-
+  int? indexs;
   List<Map<String, dynamic>> mezmureDawit = [
     {
       "id": 1,
@@ -62,8 +62,6 @@ class _BodyState extends State<Body> {
 6 ከሚከብቡኝ ከአእላፍ ሕዝብ አልፈራም።
 7 ተነሥ፥ አቤቱ፤ አምላኬ ሆይ፥ አድነኝ፤ አንተ የጠላቶቼን መንጋጋ መትተሃልና፥ የክፉዎችንም ጥርስ ሰብረሃልና።
 8 ማዳን የእግዚአብሔር ነው፥ በረከትህም በሕዝብህ ላይ ነው።
-
-
 """,
     },
     {
@@ -78,8 +76,6 @@ class _BodyState extends State<Body> {
 6 በጎውን ማን ያሳየናል? የሚሉ ብዙ ናቸው። አቤቱ፥ የፊትህ ብርሃን በላያችን ታወቀ።
 7 በልቤ ደስታን ጨመርህ፤ ከስንዴ ፍሬና ከወይን ከዘይትም ይልቅ በዛ።
 8 በሰላም እተኛለሁ አንቀላፋለሁም፤ አቤቱ፥ አንተ ብቻህን በእምነት አሳድረኸኛልና።
-
-
 """,
     },
 
@@ -99,8 +95,6 @@ class _BodyState extends State<Body> {
 10 አቤቱ፥ ፍረድባቸው፥ በምክራቸውም ይውደቁ፤ ስለ ክፋታቸውም ብዛት አሳድዳቸው፥ እነርሱ ዐምፀውብሃልና።
 11 በአንተ የሚታመኑት ሁሉ ግን ደስ ይላቸዋል፤ ለዘላለሙ ደስ ይላቸዋል፥ እነርሱንም ትጠብቃለህ፤ ስምህንም የሚወድዱ ሁሉ በአንተ ይመካሉ።
 12 አንተ ጻድቁን ትባርከዋለህና፤ አቤቱ፥ እንደ ጋሻ በሞገስ ከለልኸን።
-
-
 """,
     },
     {
@@ -118,7 +112,6 @@ class _BodyState extends State<Body> {
 8 ዓመፃን የምታደርጉ ሁሉ፥ ከእኔ ራቁ፥ እግዚአብሔር የልቅሶዬን ቃል ሰምቶአልና።
 9 እግዚአብሔር ልመናዬን ሰማኝ፤ እግዚአብሔር ጸሎቴን ተቀበለ።
 10 ጠላቶቼ ሁሉ ይፈሩ እጅግም ይጐስቍሉ፤ ወደ ኋላቸው ይመለሱ፥ በፍጥነትም ይፈሩ።
-
 """,
     },
     {
@@ -142,9 +135,6 @@ class _BodyState extends State<Body> {
 15 ጕድጓድን ማሰ ቈፈረም። ባደረገውም ጕድጓድ ይወድቃል።
 16 ጉዳቱ በራሱ ይመለሳል፥ ዓመፃውም በአናቱ ላይ ትወርዳለች።
 17 እግዚአብሔርን እንደ ጽድቁ መጠን አመሰግናለሁ፥ ለልዑል እግዚአብሔርም ስም እዘምራለሁ።
-
-
-
 """,
     },
     {
@@ -160,9 +150,6 @@ class _BodyState extends State<Body> {
 7 በጎችንም ላሞችንም ሁሉ ደግሞም የምድረ በዳውን እንስሶች፥
 8 የሰማይንም ወፎች የባሕርንም ዓሦች፥ በባሕር መንገድ የሚሄደውንም ሁሉ።
 9 አቤቱ ጌታችን፥ ስምህ በምድር ሁሉ እጅግ ተመሰገነ።
-
-
-
 """,
     },
     {
@@ -190,9 +177,6 @@ class _BodyState extends State<Body> {
 18 ድሀ ለዘላለም አይረሳምና፥ የችግረኞችም ተስፋቸው ለዘላለም አይጠፋም።
 19 አቤቱ፥ ተነሥ፤ ሰውም አይበርታ፥ አሕዛብም በፊትህ ይፈረድባቸው።
 20 አቤቱ፥ ፍርሃትን በላያቸው ጫንባቸው፤ አሕዛብ ሰዎች እንደ ሆኑ ይወቁ።
-
-
-
 """,
     },
     {
@@ -216,28 +200,35 @@ class _BodyState extends State<Body> {
 15 የኃጢአተኛንና የክፉን ክንድ ስበር፥ የኃጢአቱንም ብድራት ክፈል ሌላ እስከማይገኝ ድረስ።
 16 እግዚአብሔር ለዘላለም ይነግሣል፤ አሕዛብ ከምድሩ ይጠፋሉ።
 17 እግዚአብሔር የድሆችን ምኞት ሰማ፥ ጆሮውም የልባቸውን አሳብ አደመጠች፥
-18 ፍርዱ ለድሀ አደግና ለችግረኛ ይደረግ ዘንድ፥ ሰዎች በምድር ላይ አፋቸውን ከፍ ከፍ ማድረግ እንዳይደግሙ።
-
-
-
-""",
+18 ፍርዱ ለድሀ አደግና ለችግረኛ ይደረግ ዘንድ፥ ሰዎች በምድር ላይ አፋቸውን ከፍ ከፍ ማድረግ እንዳይደግሙ""",
     },
     {
       "id": 11,
       "ምዕራፍ": "ምዕራፍ 11",
       "text": """
-
-
-
+ለመዘምራን አለቃ፤ የዳዊት መዝሙር።
+1 በእግዚአብሔር ታመንሁ፤ ነፍሴን። እንደ ወፍ ወደ ተራሮች ተቅበዝበዢ እንዴት ትሉአታላችሁ?
+2 ኃጢአተኞች እነሆ ቀስታቸውን ገትረዋልና፥ ፍላጻቸውንም በአውታር አዘጋጅተዋልና፥ ልበ ቅኖችን በስውር ይነድፉ ዘንድ።
+3 አንተ የሠራኸውን እነሆ እነርሱ አፍርሰዋልና፤ ጻድቅ ግን ምን አደረገ?
+4 እግዚአብሔር በተቀደሰው መቅደሱ ነው፤ እግዚአብሔር፥ ዙፋኑ በሰማይ ነው፤ ዓይኖቹ ወደ ድሃ ይመለከታሉ፥ ቅንድቦቹም የሰው ልጆችን ይመረምራሉ።
+5 እግዚአብሔር ጻድቅንና ኅጥእን ይመረምራል፤ ዓመፃን የወደዳት ግን ነፍሱን ጠልቶአል።
+6 ወጥመድ በኅጥኣን ላይ ያዘንባል እሳትና ዲን ዐውሎ ነፋስም የጽዋቸው እድል ፈንታ ነው።
+7 እግዚአብሔር ጻድቅ ነውና፥ ጽድቅንም ይወድዳል፤ ቅንነት ግን ፊቱን ታየዋለች።
 """,
     },
     {
       "id": 12,
       "ምዕራፍ": "ምዕራፍ 12",
       "text": """
-
-
-
+ለመዘምራን አለቃ፥ ስለ ስምንተኛ የዳዊት መዝሙር።
+1 አቤቱ፥ አድነኝ፤ ደግ ሰው አልቆአልና፥ ከሰው ልጆችም መተማመን ጐድሎአልና።
+2 እርስ በርሳቸው ከንቱ ነገርን ይናገራሉ፤ በሽንገላ ከንፈር ሁለት ልብ ሆነው ይናገራሉ።
+3 የሽንገላን ከንፈሮች ሁሉ እግዚአብሔር ያጠፋቸዋል፥ ታላቅ ነገርን የምትናገረውን ምላስ፤
+4 ምላሳችንን እናበረታለን፤ ከንፈራችን የእኛ ነው፥ ጌታችን ማን ነው? የሚሉትን።
+5 ስለ ድሆች መከራ፥ ስለ ችግረኞች ጩኸት እግዚአብሔር። አሁን እነሣለሁ ይላል፤ መድኃኒትን አደርጋለሁ፥ በላዩም እገልጣለሁ።
+6 በምድር ላይ እንደ ተፈተነ ሰባት ጊዜ እንደ ተጣራ ብር። የእግዚአብሔር ቃላት የነጹ ቃላት ናቸው።
+7 አቤቱ፥ አንተ ጠብቀን፥ ከዚህችም ትውልድ ለዘላለም ታደገን።
+8 በሰው ልጆች ዘንድ ምናምንቴ ከፍ ከፍ ባለ ጊዜ ክፉዎች በዙሪያው ሁሉ ይመላለሳሉ።
 """,
     },
     {
@@ -304,80 +295,49 @@ class _BodyState extends State<Body> {
 """,
     },
   ];
-  // Axis direction = Axis.vertical;
 
   @override
   Widget build(BuildContext context) {
-    // void horizontalDirection() {
-    //   setState(() {
-    //     direction = Axis.horizontal;
-    //   });
-    // }
-
-    // void verticalDirection() {
-    //   direction = Axis.vertical;
-    // }
-    // Future<void> btn() async {
-    //   FilePickerResult? result = await FilePicker.platform.pickFiles(
-    //     type: FileType.image,
-    //   );
-
-    //   if (result != null && result.files.isNotEmpty) {
-    //     PlatformFile file = result.files.first;
-
-    //     setState(() {
-    //       img = file.name;
-    //       _display = file.path;
-    //     });
-    //   }
-    //   print(img);
-    // }
     print('${widget.bodyBool}');
-    return PageView.builder(
+
+    return ListView.builder(
       scrollDirection: widget.bodyBool,
-      controller: PageController(),
       itemCount: mezmureDawit.length,
+      controller: ScrollController(),
+      shrinkWrap: true,
+
       itemBuilder: (context, index) {
-        return Container(
-          child: Column(
-            spacing: 15,
-            children: [
-              // Container(
-              //   child: GestureDetector(
-              //     onTap: widget.axisHorizontalDirection,
-              //     child: Text('horizontal'),
-              //   ),
-              // ),
-              Expanded(
-                flex: 0,
-                child: ListTile(
-                  title: ListTile(
-                    tileColor: Colors.brown,
-                    title: Align(
-                      alignment: AlignmentGeometry.center,
-                      child: Text(
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-
-                        '${mezmureDawit[index]['ምዕራፍ']}',
-                      ),
+        return Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 20.0, bottom: 10.0),
+                child: Align(
+                  alignment: AlignmentGeometry.bottomRight,
+                  child: Text(
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      wordSpacing: 10.0,
                     ),
+                    mezmureDawit[index]['ምዕራፍ'],
                   ),
                 ),
               ),
-
-              Expanded(
-                child: ListTile(
-                  title: Text(
-                    style: TextStyle(),
-                    '${mezmureDawit[index]['text']}',
-                  ),
-                ),
+            ),
+            Container(
+              padding: EdgeInsets.only(right: 15.0),
+              child: Divider(indent: 100.0, color: Colors.deepOrange),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                style: TextStyle(fontSize: 20.0, wordSpacing: 2.0),
+                mezmureDawit[index]['text'],
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

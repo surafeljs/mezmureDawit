@@ -42,6 +42,7 @@ class _OrthodoxState extends State<Orthodox> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: isThems ? ThemeData.dark() : ThemeData.light(),
+
       debugShowCheckedModeBanner: false,
 
       home: HomeScreen(isThems: isThems, onThemeChanged: updateTheme),

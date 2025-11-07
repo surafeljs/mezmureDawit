@@ -77,9 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.indexs);
     return Scaffold(
       appBar: AppBar(
-        title: Text('መዝሙረ ዳዊት'),
+        title: Text(style: TextStyle(fontWeight: FontWeight.bold), 'መዝሙረ ዳዊት'),
         actions: [
           Padding(
             padding: EdgeInsetsGeometry.all(8),
@@ -160,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.orange,
       ),
       drawer: Drawers(),
       body: Body(
