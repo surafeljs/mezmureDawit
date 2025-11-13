@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Drawers extends StatefulWidget {
-  const Drawers({super.key});
-
   @override
   State<Drawers> createState() => _DrawersState();
 }
@@ -16,7 +14,8 @@ class _DrawersState extends State<Drawers> {
           DrawerHeader(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/134009274249421277.jpg'),
+                image: AssetImage('assets/img/drawerHeaderCover.jpg'),
+                repeat: ImageRepeat.noRepeat,
 
                 fit: BoxFit.cover,
                 // Makes the image fill the header

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orthodox/body.dart';
+
+import 'package:orthodox/home_creen.dart';
 import 'package:orthodox/main.dart';
 
 class Setting extends StatefulWidget {
@@ -8,7 +9,7 @@ class Setting extends StatefulWidget {
   final VoidCallback axisHorizontalDirections;
   final VoidCallback axisVerticalDirections;
 
-  Setting({
+  const Setting({
     super.key,
     required this.bodyBools,
 
@@ -21,9 +22,29 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  List<String> radio = ['ወደ ጎን ', 'ከላይ ወደታች'];
-  String? _selectedValue;
-
+  List<String> fontType = [
+    'EthiopicLessan',
+    'EthiopicSadiss',
+    'FreeSerif',
+    'Wookianos',
+    'Washrab',
+    'WaldbaFantuwua',
+    'VGUnicode',
+    'Tint',
+    'Tayitu',
+    'NotoSansEthiopic',
+    'Meaza',
+    'Hiwua',
+    'GeezHandwriting',
+    'GeezDigital',
+    'Geez-Pixels',
+    'Geez-Manuscript',
+    'AbyssinicaSIL',
+    'Brana',
+    'Desta',
+    'Abay',
+  ];
+  String? _selectedFont;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +118,43 @@ class _SettingState extends State<Setting> {
                     Padding(
                       padding: const EdgeInsets.only(left: 30.0, top: 5.0),
                       child: SizedBox(
+                        height: 70.0,
+                        child: DropdownButton(
+                          hint: Text('Font Type'),
+                          value: _selectedFont,
+
+                          items: fontType
+                              .map(
+                                (f) => DropdownMenuItem<String>(
+                                  value: f,
+                                  child: Text(f),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedFont = value;
+                            });
+                            print(_selectedFont);
+                            if (value != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomeScreen(
+                                    isThems: false,
+                                    fontType: value,
+                                    onThemeChanged: (v) {},
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
+                      child: SizedBox(
                         height: 50.0,
                         child: Text('Share', style: TextStyle(fontSize: 20.0)),
                       ),
@@ -105,6 +163,7 @@ class _SettingState extends State<Setting> {
                       padding: const EdgeInsets.only(left: 30.0),
                       child: SizedBox(
                         height: 50.0,
+
                         child: Text(
                           'Rate us',
                           style: TextStyle(fontSize: 20.0),
@@ -116,7 +175,7 @@ class _SettingState extends State<Setting> {
                       child: SizedBox(
                         height: 50.0,
                         child: Text(
-                          'More apps',
+                          'More apps ',
                           style: TextStyle(fontSize: 20.0),
                         ),
                       ),

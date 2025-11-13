@@ -51,7 +51,12 @@ class _MoreVertState extends State<MoreVert> {
                 value: 'Share',
                 child: ListTile(
                   leading: Icon(Icons.share),
-                  title: Text('Share'),
+                  title: GestureDetector(
+                    onTap: () {
+                      print('object');
+                    },
+                    child: Text('Share'),
+                  ),
                 ),
               ),
               PopupMenuItem(

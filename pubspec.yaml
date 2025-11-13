@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^6.3.2
   share_plus: ^12.0.1
   file_picker: ^10.3.3
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +64,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/img/drawerHeaderCover.jpg
     
    
   
@@ -81,12 +83,78 @@ flutter:
   # example:
  
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+   - family: AbyssinicaSIL
+     fonts:
+      - asset: assets/fonts/AbyssinicaSIL-Regular.ttf
+
+
+   - family: Brana
+     fonts:
+       - asset: assets/fonts/Brana-Regular.ttf
+   
+   
+   - family: Desta
+     fonts:
+       - asset: assets/fonts/A0DestaUnicode_20030827.ttf
+       
+   - family: Abay
+     fonts:
+       - asset: assets/fonts/EthiopicAbay-Regular.ttf
+   - family: EthiopicLessan
+     fonts:
+        - asset: assets/fonts/EthiopicLessan-Regular.ttf
+   - family: EthiopicSadiss
+     fonts:
+          - asset: assets/fonts/EthiopicSadiss-Regular.ttf
+   - family: FreeSerif
+     fonts:
+          - asset: assets/fonts/FreeSerif.ttf
+   - family: wookianos
+     fonts:
+            - asset: assets/fonts/wookianos.ttf
+   - family: washrab
+     fonts:
+            - asset: assets/fonts/washrab.ttf
+   - family: WaldbaFantuwua
+     fonts:
+              - asset: assets/fonts/WaldbaFantuwua-Regular.ttf
+   - family: VGUnicode
+     fonts:
+            - asset: assets/fonts/VGUnicode.ttf
+   - family: tint
+     fonts:
+           - asset: assets/fonts/tint.ttf
+   - family: Tayitu
+     fonts:
+             - asset: assets/fonts/Tayitu.ttf
+   - family: NotoSansEthiopic
+     fonts:
+            - asset: assets/fonts/NotoSansEthiopic-Regular.ttf
+   - family: Meaza
+     fonts:
+              - asset: assets/fonts/Meaza.ttf
+   - family: hiwua
+     fonts:
+            - asset: assets/fonts/hiwua.ttf
+   - family: GeezHandwriting
+     fonts:
+          - asset: assets/fonts/GeezHandwriting.ttf
+   - family: GeezDigital
+     fonts:
+            - asset: assets/fonts/GeezDigital_V1.ttf
+   - family: Geez-Pixels
+     fonts:
+        - asset: assets/fonts/Geez-Pixels-2.ttf
+   - family: Geez-Manuscript
+     fonts:
+             - asset: assets/fonts/Geez-Manuscript-Zemen-COLR.ttf
+
+
+
+
+
+       
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

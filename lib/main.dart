@@ -45,7 +45,11 @@ class _OrthodoxState extends State<Orthodox> {
 
       debugShowCheckedModeBanner: false,
 
-      home: HomeScreen(isThems: isThems, onThemeChanged: updateTheme),
+      home: HomeScreen(
+        isThems: isThems,
+        fontType: null,
+        onThemeChanged: updateTheme,
+      ),
     );
   }
 }

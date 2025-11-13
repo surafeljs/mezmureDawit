@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
   final Axis bodyBool;
+  final String? fontTypes;
   final VoidCallback axisHorizontalDirection;
   final VoidCallback axisVerticalDirection;
 
   const Body({
     super.key,
     required this.bodyBool,
+    required this.fontTypes,
     required this.axisVerticalDirection,
     required this.axisHorizontalDirection,
   });
@@ -299,11 +301,12 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     print('${widget.bodyBool}');
+    print('${widget.fontTypes}...............');
 
     return ListView.builder(
       scrollDirection: widget.bodyBool,
       itemCount: mezmureDawit.length,
-      controller: ScrollController(),
+
       shrinkWrap: true,
 
       itemBuilder: (context, index) {
@@ -320,6 +323,7 @@ class _BodyState extends State<Body> {
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       wordSpacing: 10.0,
+                      fontFamily: '${widget.fontTypes}',
                     ),
                     mezmureDawit[index]['ምዕራፍ'],
                   ),
@@ -333,7 +337,11 @@ class _BodyState extends State<Body> {
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
-                style: TextStyle(fontSize: 20.0, wordSpacing: 2.0),
+                style: TextStyle(
+                  fontSize: 20.0,
+                  wordSpacing: 2.0,
+                  fontFamily: '${widget.fontTypes}',
+                ),
                 mezmureDawit[index]['text'],
               ),
             ),

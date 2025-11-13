@@ -4,14 +4,17 @@ import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isThems;
+  final String? fontType;
   final ValueChanged<bool> onThemeChanged;
 
   const HomeScreen({
     super.key,
     required this.isThems,
+    required this.fontType,
 
     required this.onThemeChanged,
   });
@@ -77,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.indexs);
     return Scaffold(
       appBar: AppBar(
         title: Text(style: TextStyle(fontWeight: FontWeight.bold), 'መዝሙረ ዳዊት'),
@@ -105,7 +107,13 @@ class _HomeScreenState extends State<HomeScreen> {
           // ),
           IconButton(
             onPressed: () async {
-              await SharePlus.instance.share(ShareParams(text: 'shardgge'));
+              await SharePlus.instance.share(
+                ShareParams(
+                  uri: Uri.parse(
+                    'https://play.google.com/store/apps/details?id=com.example.yourapp',
+                  ),
+                ),
+              );
             },
             icon: Icon(Icons.share),
           ),
@@ -123,6 +131,39 @@ class _HomeScreenState extends State<HomeScreen> {
                         axisHorizontalDirections: horizontalDirection,
                       ),
                     ),
+                  );
+                  break;
+
+                case 'Rate':
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: RatingBar.builder(
+                          initialRating: 3,
+                          minRating: 1,
+
+                          allowHalfRating: true,
+                          itemCount: 5,
+
+                          itemBuilder: (context, index) {
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    title: Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          onRatingUpdate: (update) {},
+                        ),
+                      );
+                    },
                   );
                   break;
                 default:
@@ -161,13 +202,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.orange[400],
       ),
       drawer: Drawers(),
       body: Body(
         bodyBool: direction,
-        axisHorizontalDirection: horizontalDirection,
+        fontTypes: widget.fontType,
         axisVerticalDirection: verticalDirection,
+        axisHorizontalDirection: horizontalDirection,
       ),
     );
   }
