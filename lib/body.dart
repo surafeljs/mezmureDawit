@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
   final Axis bodyBool;
-  final String? fontTypes;
+  String? fontTypes;
   final VoidCallback axisHorizontalDirection;
   final VoidCallback axisVerticalDirection;
 
-  const Body({
+  Body({
     super.key,
     required this.bodyBool,
-    required this.fontTypes,
+    this.fontTypes,
     required this.axisVerticalDirection,
     required this.axisHorizontalDirection,
   });
@@ -19,8 +20,8 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   // String? img;
-  // String? _display;
-  int? indexs;
+  int? _display_index;
+
   List<Map<String, dynamic>> mezmureDawit = [
     {
       "id": 1,
@@ -297,12 +298,31 @@ class _BodyState extends State<Body> {
 """,
     },
   ];
+  @override
+  void initState() {
+    setData();
+    getData();
+    super.initState();
+  }
+
+  Future<void> setData() async {
+    SharedPreferences sharepreferences = await SharedPreferences.getInstance();
+
+    sharepreferences.setString('key', '${widget.fontTypes}');
+  }
+
+  Future<void> getData() async {
+    SharedPreferences sharepreferences = await SharedPreferences.getInstance();
+
+    String? v = sharepreferences.getString('key') ?? ' ';
+    setState(() {
+      widget.fontTypes = v;
+    });
+    print('$v /////////////////////');
+  }
 
   @override
   Widget build(BuildContext context) {
-    print('${widget.bodyBool}');
-    print('${widget.fontTypes}...............');
-
     return ListView.builder(
       scrollDirection: widget.bodyBool,
       itemCount: mezmureDawit.length,
@@ -310,6 +330,8 @@ class _BodyState extends State<Body> {
       shrinkWrap: true,
 
       itemBuilder: (context, index) {
+        _display_index = index;
+
         return Column(
           children: [
             Container(

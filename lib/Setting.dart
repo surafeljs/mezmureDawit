@@ -48,7 +48,18 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.deepOrange, centerTitle: true),
+      appBar: AppBar(
+        backgroundColor: Colors.orange[400],
+        centerTitle: true,
+        title: Text(
+          'Setting',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 3.0,
+            fontSize: 23.0,
+          ),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -135,7 +146,7 @@ class _SettingState extends State<Setting> {
                             setState(() {
                               _selectedFont = value;
                             });
-                            print(_selectedFont);
+
                             if (value != null) {
                               Navigator.push(
                                 context,
@@ -143,6 +154,7 @@ class _SettingState extends State<Setting> {
                                   builder: (context) => HomeScreen(
                                     isThems: false,
                                     fontType: value,
+                                    indexs: null,
                                     onThemeChanged: (v) {},
                                   ),
                                 ),

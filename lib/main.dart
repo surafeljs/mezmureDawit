@@ -48,6 +48,7 @@ class _OrthodoxState extends State<Orthodox> {
       home: HomeScreen(
         isThems: isThems,
         fontType: null,
+        indexs: null,
         onThemeChanged: updateTheme,
       ),
     );
