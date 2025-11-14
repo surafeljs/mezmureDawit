@@ -152,7 +152,7 @@ class _SettingState extends State<Setting> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomeScreen(
-                                    isThems: false,
+                                    isThems: true,
                                     fontType: value,
                                     indexs: null,
                                     onThemeChanged: (v) {},

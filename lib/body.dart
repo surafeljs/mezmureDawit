@@ -10,7 +10,7 @@ class Body extends StatefulWidget {
   Body({
     super.key,
     required this.bodyBool,
-    this.fontTypes,
+    required this.fontTypes,
     required this.axisVerticalDirection,
     required this.axisHorizontalDirection,
   });
@@ -20,7 +20,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   // String? img;
-  int? _display_index;
+  String? displayFont;
 
   List<Map<String, dynamic>> mezmureDawit = [
     {
@@ -298,29 +298,30 @@ class _BodyState extends State<Body> {
 """,
     },
   ];
+
+  // ...existing code...
+
   @override
   void initState() {
-    setData();
-    getData();
     super.initState();
+    _initPrefs();
   }
 
-  Future<void> setData() async {
-    SharedPreferences sharepreferences = await SharedPreferences.getInstance();
+  Future<void> _initPrefs() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    sharepreferences.setString('key', '${widget.fontTypes}');
-  }
+    if (widget.fontTypes != null && widget.fontTypes!.isNotEmpty) {
+      await prefs.setString('font_key', '${widget.fontTypes}');
+    }
 
-  Future<void> getData() async {
-    SharedPreferences sharepreferences = await SharedPreferences.getInstance();
+    final String stored = prefs.getString('font_key') ?? '';
 
-    String? v = sharepreferences.getString('key') ?? ' ';
     setState(() {
-      widget.fontTypes = v;
+      displayFont = stored;
     });
-    print('$v /////////////////////');
   }
 
+  // ...existing code...
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -330,8 +331,6 @@ class _BodyState extends State<Body> {
       shrinkWrap: true,
 
       itemBuilder: (context, index) {
-        _display_index = index;
-
         return Column(
           children: [
             Container(
@@ -345,7 +344,7 @@ class _BodyState extends State<Body> {
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       wordSpacing: 10.0,
-                      fontFamily: '${widget.fontTypes}',
+                      fontFamily: '$displayFont',
                     ),
                     mezmureDawit[index]['ምዕራፍ'],
                   ),
@@ -362,7 +361,7 @@ class _BodyState extends State<Body> {
                 style: TextStyle(
                   fontSize: 20.0,
                   wordSpacing: 2.0,
-                  fontFamily: '${widget.fontTypes}',
+                  fontFamily: '$displayFont',
                 ),
                 mezmureDawit[index]['text'],
               ),
