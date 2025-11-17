@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:orthodox/mezmureDawit.dart';
+import 'package:orthodox/mezmure_dawit.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});

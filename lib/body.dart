@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
@@ -304,6 +305,7 @@ class _BodyState extends State<Body> {
   @override
   void initState() {
     super.initState();
+
     _initPrefs();
   }
 
@@ -321,7 +323,6 @@ class _BodyState extends State<Body> {
     });
   }
 
-  // ...existing code...
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

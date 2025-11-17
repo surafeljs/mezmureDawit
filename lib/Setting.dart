@@ -154,7 +154,7 @@ class _SettingState extends State<Setting> {
                                   builder: (context) => HomeScreen(
                                     isThems: true,
                                     fontType: value,
-                                    indexs: null,
+
                                     onThemeChanged: (v) {},
                                   ),
                                 ),
