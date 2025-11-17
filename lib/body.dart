@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/home_creen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,7 +23,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   // String? img;
   String? displayFont;
-
+  ScrollController _controller = ScrollController();
   List<Map<String, dynamic>> mezmureDawit = [
     {
       "id": 1,
@@ -301,11 +302,29 @@ class _BodyState extends State<Body> {
   ];
 
   // ...existing code...
+  int? bodyIndex;
 
   @override
   void initState() {
     super.initState();
 
+    _controller.addListener(() {
+      if (_controller.position.pixels ==
+          _controller.position.maxScrollExtent) {}
+
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => HomeScreen(
+      //       isThems: true,
+      //       fontType: null,
+      //       onThemeChanged: (v) {},
+      //       indexs: bodyIndex,
+      //     ),
+      //   ),
+      // );
+      print('$bodyIndex ////////');
+    });
     _initPrefs();
   }
 
@@ -327,11 +346,14 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: widget.bodyBool,
-      itemCount: mezmureDawit.length,
 
+      itemCount: mezmureDawit.length,
+      controller: _controller,
       shrinkWrap: true,
 
       itemBuilder: (context, index) {
+        bodyIndex = index;
+
         return Column(
           children: [
             Container(

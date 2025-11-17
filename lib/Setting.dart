@@ -156,6 +156,7 @@ class _SettingState extends State<Setting> {
                                     fontType: value,
 
                                     onThemeChanged: (v) {},
+                                    indexs: null,
                                   ),
                                 ),
                               );

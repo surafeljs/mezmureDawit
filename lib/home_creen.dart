@@ -10,13 +10,14 @@ class HomeScreen extends StatefulWidget {
   final bool isThems;
   final String? fontType;
   final ValueChanged<bool> onThemeChanged;
-
+  final int? indexs;
   const HomeScreen({
     super.key,
     required this.isThems,
     required this.fontType,
 
     required this.onThemeChanged,
+    required this.indexs,
   });
 
   @override
