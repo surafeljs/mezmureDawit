@@ -45,8 +45,11 @@ class _SettingState extends State<Setting> {
     'Abay',
   ];
   String? _selectedFont;
+  List<String> option = ['1', '2'];
   @override
   Widget build(BuildContext context) {
+    String a = option[0];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange[400],
@@ -76,6 +79,11 @@ class _SettingState extends State<Setting> {
                         child: GestureDetector(
                           onTap: () {
                             showDialog(
+                              animationStyle: AnimationStyle(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.bounceOut,
+                                reverseCurve: Curves.bounceIn,
+                              ),
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
@@ -85,17 +93,35 @@ class _SettingState extends State<Setting> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       ListTile(
-                                        title: GestureDetector(
+                                        title: InkWell(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
                                           onTap:
                                               widget.axisHorizontalDirections,
 
-                                          child: Text('ወደ ጎን '),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'ወደ ጎን ',
+                                              style: TextStyle(fontSize: 18.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       ListTile(
-                                        title: GestureDetector(
+                                        title: InkWell(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
                                           onTap: widget.axisVerticalDirections,
-                                          child: Text('ከላይ ወደታች '),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'ከላይ ወደታች ',
+                                              style: TextStyle(fontSize: 18.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -103,7 +129,10 @@ class _SettingState extends State<Setting> {
 
                                   actions: [
                                     GestureDetector(
-                                      child: Text('Ok'),
+                                      child: Text(
+                                        'Ok',
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
 
                                       onTap: () {
                                         Navigator.push(

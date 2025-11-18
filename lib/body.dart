@@ -302,29 +302,12 @@ class _BodyState extends State<Body> {
   ];
 
   // ...existing code...
-  int? bodyIndex;
+  int bodyIndex = 0;
 
   @override
   void initState() {
     super.initState();
 
-    _controller.addListener(() {
-      if (_controller.position.pixels ==
-          _controller.position.maxScrollExtent) {}
-
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => HomeScreen(
-      //       isThems: true,
-      //       fontType: null,
-      //       onThemeChanged: (v) {},
-      //       indexs: bodyIndex,
-      //     ),
-      //   ),
-      // );
-      print('$bodyIndex ////////');
-    });
     _initPrefs();
   }
 
@@ -348,12 +331,10 @@ class _BodyState extends State<Body> {
       scrollDirection: widget.bodyBool,
 
       itemCount: mezmureDawit.length,
-      controller: _controller,
+
       shrinkWrap: true,
 
       itemBuilder: (context, index) {
-        bodyIndex = index;
-
         return Column(
           children: [
             Container(
@@ -386,7 +367,7 @@ class _BodyState extends State<Body> {
                   wordSpacing: 2.0,
                   fontFamily: '$displayFont',
                 ),
-                mezmureDawit[index]['text'],
+                mezmureDawit[index]['text'].toString(),
               ),
             ),
           ],
