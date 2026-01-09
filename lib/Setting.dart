@@ -45,11 +45,9 @@ class _SettingState extends State<Setting> {
     'Abay',
   ];
   String? _selectedFont;
-  List<String> option = ['1', '2'];
+
   @override
   Widget build(BuildContext context) {
-    String a = option[0];
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange[400],
@@ -84,6 +82,8 @@ class _SettingState extends State<Setting> {
                                 curve: Curves.bounceOut,
                                 reverseCurve: Curves.bounceIn,
                               ),
+                              useSafeArea: true,
+
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
