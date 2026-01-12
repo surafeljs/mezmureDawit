@@ -46,6 +46,7 @@ class _OrthodoxState extends State<Orthodox> {
       debugShowCheckedModeBanner: false,
 
       home: HomeScreen(
+        drawerIndex: 0,
         isThems: isThems,
         fontType: null,
 

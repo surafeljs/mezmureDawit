@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orthodox/home_creen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -7,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'data.dart';
 
 class Body extends StatefulWidget {
+  final int drawerIndex;
   final Axis bodyBool;
   String? fontTypes;
   final VoidCallback axisHorizontalDirection;
@@ -14,6 +14,8 @@ class Body extends StatefulWidget {
 
   Body({
     super.key,
+    required this.drawerIndex,
+
     required this.bodyBool,
     required this.fontTypes,
     required this.axisVerticalDirection,
@@ -33,19 +35,40 @@ class _BodyState extends State<Body> {
     return jsonList.map((e) => Data.fromJson(e)).toList();
   }
 
-  // String? img;
   String? displayFont;
-  ScrollController _controller = ScrollController();
-  String? dd = "kkkk";
-  // ...existing code...
+  late final ScrollController _scrollController;
   int bodyIndex = 0;
   List<Data> mezmure = [];
+  int zz = 0;
   @override
   void initState() {
     super.initState();
+    bodyIndex = widget.drawerIndex;
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(_onScroll);
     _loadData();
-    // findEgziabher();
+
     _initPrefs();
+
+    print("messsss $bodyIndex");
+  }
+
+  void _onScroll() {
+    if (!_scrollController.hasClients) return;
+
+    // Approximate item height (adjust if needed)
+    const double itemHeight = 250;
+
+    final int index = (_scrollController.offset / itemHeight).floor();
+
+    if (index != bodyIndex && index >= 0 && index < mezmure.length) {
+      setState(() {
+        bodyIndex = index;
+      });
+
+      print('Current bodyIndex: $bodyIndex');
+    }
   }
 
   Future<void> _loadData() async {
@@ -53,6 +76,16 @@ class _BodyState extends State<Body> {
     if (!mounted) return;
     setState(() {
       mezmure = data;
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.drawerIndex >= 0 && widget.drawerIndex < mezmure.length) {
+        const double itemHeight = 250.0; // approximate height of each chapter
+        _scrollController.jumpTo(widget.drawerIndex * itemHeight);
+
+        setState(() {
+          bodyIndex = widget.drawerIndex;
+        });
+      }
     });
   }
 
@@ -63,6 +96,7 @@ class _BodyState extends State<Body> {
     return [
       for (int i = 0; i < parts.length; i++) ...[
         TextSpan(text: parts[i]), // normal text
+
         if (i != parts.length - 1)
           TextSpan(
             text: keyword,
@@ -90,6 +124,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: mezmure.length,
+      controller: _scrollController,
       itemBuilder: (context, index) {
         return Column(
           children: [

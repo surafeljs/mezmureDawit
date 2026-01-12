@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/home_creen.dart';
 
 class Drawers extends StatefulWidget {
   @override
@@ -6,6 +7,7 @@ class Drawers extends StatefulWidget {
 }
 
 class _DrawersState extends State<Drawers> {
+  int drawerIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -27,24 +29,80 @@ class _DrawersState extends State<Drawers> {
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 1'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                    drawerIndex: 1,
+                    isThems: false,
+                    fontType: null,
+                    onThemeChanged: (context) {},
+                    indexs: null,
+                  ),
+                ),
+              );
+            },
           ),
           SizedBox(height: 20.0),
 
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 2'),
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                    drawerIndex: 2,
+                    isThems: false,
+                    fontType: null,
+                    onThemeChanged: (context) {},
+                    indexs: null,
+                  ),
+                ),
+              );
+            },
           ),
           SizedBox(height: 20.0),
 
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 3'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                    drawerIndex: 3,
+                    isThems: false,
+                    fontType: null,
+                    onThemeChanged: (context) {},
+                    indexs: null,
+                  ),
+                ),
+              );
+            },
           ),
           SizedBox(height: 20.0),
           ListTile(
             leading: Icon(Icons.radio_button_checked),
             title: Text('መዝሙር 4'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(
+                    drawerIndex: 4,
+                    isThems: false,
+                    fontType: null,
+                    onThemeChanged: (context) {},
+                    indexs: null,
+                  ),
+                ),
+              );
+            },
           ),
           SizedBox(height: 20.0),
           ListTile(

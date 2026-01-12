@@ -7,12 +7,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomeScreen extends StatefulWidget {
+  final int drawerIndex;
   final bool isThems;
   final String? fontType;
   final ValueChanged<bool> onThemeChanged;
   final int? indexs;
+
   const HomeScreen({
     super.key,
+    required this.drawerIndex,
+
     required this.isThems,
     required this.fontType,
 
@@ -26,7 +30,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Axis direction = Axis.vertical;
-
+  String dataFromChild = "No data yet";
   String text = '';
   Icon isdark = Icon(Icons.dark_mode);
   bool? abc = false;
@@ -97,15 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(widget.isThems ? Icons.light_mode : Icons.dark_mode),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Switch(
-          //     value: widget.isThems,
-          //     onChanged: (value) {
-          //       widget.onThemeChanged(value);
-          //     },
-          //   ),
-          // ),
+
           IconButton(
             onPressed: () async {
               await SharePlus.instance.share(
@@ -207,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: Drawers(),
       body: Body(
+        drawerIndex: widget.drawerIndex,
         bodyBool: direction,
         fontTypes: widget.fontType,
         axisVerticalDirection: verticalDirection,

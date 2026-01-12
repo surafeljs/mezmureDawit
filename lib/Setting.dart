@@ -181,6 +181,7 @@ class _SettingState extends State<Setting> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomeScreen(
+                                    drawerIndex: 0,
                                     isThems: true,
                                     fontType: value,
 
@@ -228,41 +229,105 @@ class _SettingState extends State<Setting> {
                         height: 50.0,
                         child: GestureDetector(
                           onTap: () {
-                            showDialog(
+                            showModalBottomSheet(
+                              isScrollControlled: true,
                               context: context,
                               builder: (context) {
-                                return AlertDialog(
-                                  content: Column(
-                                    spacing: 0.0,
+                                return DraggableScrollableSheet(
+                                  expand: false,
 
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ListTile(
-                                        title: Text('Delevopd by:Surafel D.'),
-                                        subtitle: Text('Phone : 0901158062'),
-                                      ),
+                                  initialChildSize: 0.6,
+                                  minChildSize: 0.3,
+                                  maxChildSize: 0.9,
+                                  builder: (context, scrollController) {
+                                    return SingleChildScrollView(
+                                      controller: scrollController,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          child: Column(
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 90,
+                                                backgroundImage: AssetImage(
+                                                  'assets/img/drawerHeaderCover.jpg',
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentGeometry.center,
+                                                ),
+                                              ),
 
-                                      ListTile(
-                                        title: Text('Gmail'),
-                                        subtitle: Text(
-                                          'Surafel.node@gmail.com',
+                                              SizedBox(height: 20),
+                                              Text(
+                                                "Developer: Surafel D.",
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              Text(
+                                                "Phone: 0901158062",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                              Text(
+                                                'Email: Surafel.node@gmail.com',
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
+                                                ),
+                                              ),
+                                              Text("${DateTime.now().year}"),
+
+                                              SizedBox(height: 20),
+
+                                              Text(
+                                                "ይህ አፕ በአማርኛ ቋንቋ የተጻፈ የመዝሙር ዳዊት መዝሙሮችን በሙሉ የያዘ ነው።\nበእያንዳንዱ መዝሙር የተሰጠው ጥራት እና ቅርጸት በተለይ ለመንፈሳዊ ጥምረት የተዘጋጀ ነው።\nየመዝሙሩን ቃላት በቀላሉ መንበብ እና ማስታወስ ይቻላል።\nተጠቃሚዎች የተወደዱትን መዝሙሮች በፍጥነት ማስቀመጥ እና በየምድቡ ማደራጀት ይችላሉ።\nአፕው ከፍተኛ ጥራት ያለው መዝሙር ትርጉም ይሰጣል፣ ስለዚህ ማንበብ በቀላሉ እና በተስማሚ ሁኔታ ይሆናል።\nይህ አፕ የመዝሙር ዳዊት ትምህርትን እና መንፈሳዊ ልማድን ለአማርኛ ተከታዮች ቀላል ለማስተዋወቅ የተዘጋጀ ነው።\nእንዲሁም ስም, ምድብ, ወይም መዝሙር ቁጥር በመፈለጊያ ቀላል እና ፈጣን መሆኑን ይሰጣል።",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-
-                                  actions: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
+                                    );
+                                  },
                                 );
                               },
                             );
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       content: Column(
+                            //         spacing: 0.0,
+
+                            //         mainAxisSize: MainAxisSize.min,
+                            //         mainAxisAlignment: MainAxisAlignment.center,
+                            //         children: [
+                            //           ListTile(
+                            //             title: Text('Delevopd by:Surafel D.'),
+                            //             subtitle: Text('Phone : 0901158062'),
+                            //           ),
+
+                            //           ListTile(
+                            //             title: Text('Gmail'),
+                            //             subtitle: Text(
+                            //               'Surafel.node@gmail.com',
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+
+                            //       actions: [
+                            //         GestureDetector(
+                            //           onTap: () {
+                            //             Navigator.pop(context);
+                            //           },
+                            //           child: Text('Ok'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
 
                           child: Text(
