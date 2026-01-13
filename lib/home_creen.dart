@@ -12,7 +12,8 @@ class HomeScreen extends StatefulWidget {
   final String? fontType;
   final ValueChanged<bool> onThemeChanged;
   final int? indexs;
-
+  //fontSizes
+  final double? fontSize;
   const HomeScreen({
     super.key,
     required this.drawerIndex,
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 
     required this.onThemeChanged,
     required this.indexs,
+    required this.fontSize,
   });
 
   @override
@@ -37,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     getDate();
-    print(widget.indexs);
+
     super.initState();
   }
 
@@ -208,6 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
         fontTypes: widget.fontType,
         axisVerticalDirection: verticalDirection,
         axisHorizontalDirection: horizontalDirection,
+        fontSizes: widget.fontSize,
       ),
     );
   }

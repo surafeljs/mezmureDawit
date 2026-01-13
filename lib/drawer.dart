@@ -39,6 +39,7 @@ class _DrawersState extends State<Drawers> {
                     fontType: null,
                     onThemeChanged: (context) {},
                     indexs: null,
+                    fontSize: null,
                   ),
                 ),
               );
@@ -60,6 +61,7 @@ class _DrawersState extends State<Drawers> {
                     fontType: null,
                     onThemeChanged: (context) {},
                     indexs: null,
+                    fontSize: null,
                   ),
                 ),
               );
@@ -80,6 +82,8 @@ class _DrawersState extends State<Drawers> {
                     fontType: null,
                     onThemeChanged: (context) {},
                     indexs: null,
+
+                    fontSize: null,
                   ),
                 ),
               );
@@ -95,10 +99,11 @@ class _DrawersState extends State<Drawers> {
                 MaterialPageRoute(
                   builder: (context) => HomeScreen(
                     drawerIndex: 4,
-                    isThems: false,
+                    isThems: true,
                     fontType: null,
                     onThemeChanged: (context) {},
                     indexs: null,
+                    fontSize: null,
                   ),
                 ),
               );

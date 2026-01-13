@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:orthodox/home_creen.dart';
 import 'package:orthodox/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Setting extends StatefulWidget {
   final Axis bodyBools;
@@ -45,6 +46,23 @@ class _SettingState extends State<Setting> {
     'Abay',
   ];
   String? _selectedFont;
+  double _fontSlizeSlider = 20;
+  @override
+  void initState() {
+    super.initState();
+    _loadFontSize();
+  }
+
+  Future<void> _loadFontSize() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // getDouble returns null if key doesn't exist, so fallback to 20
+    final savedSize = prefs.getDouble('fontTextSizes') ?? 20.0;
+
+    setState(() {
+      _fontSlizeSlider = savedSize;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,45 +173,96 @@ class _SettingState extends State<Setting> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
-                      child: SizedBox(
-                        height: 70.0,
-                        child: DropdownButton(
-                          hint: Text('Font Type'),
-                          value: _selectedFont,
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30.0, top: 5.0),
+                          child: SizedBox(
+                            height: 70.0,
+                            child: DropdownButton(
+                              hint: Text('Font Type'),
+                              value: _selectedFont,
 
-                          items: fontType
-                              .map(
-                                (f) => DropdownMenuItem<String>(
-                                  value: f,
-                                  child: Text(f),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedFont = value;
-                            });
+                              items: fontType
+                                  .map(
+                                    (f) => DropdownMenuItem<String>(
+                                      value: f,
+                                      child: Text(f),
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (value) {
+                                setState(() {
+                                  _selectedFont = value;
+                                });
 
-                            if (value != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomeScreen(
-                                    drawerIndex: 0,
-                                    isThems: true,
-                                    fontType: value,
+                                if (value != null) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HomeScreen(
+                                        drawerIndex: 0,
+                                        isThems: true,
+                                        fontType: value,
 
-                                    onThemeChanged: (v) {},
-                                    indexs: null,
-                                  ),
-                                ),
-                              );
-                            }
-                          },
+                                        onThemeChanged: (v) {},
+                                        indexs: null,
+                                        fontSize: null,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
                         ),
-                      ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 30.0,
+                                top: 5.0,
+                              ),
+                              child: SizedBox(
+                                height: 70.0,
+                                child: Slider(
+                                  value: _fontSlizeSlider,
+                                  min: 10.0,
+                                  max: 60.0,
+                                  divisions: 50,
+                                  label: _fontSlizeSlider.toStringAsFixed(0),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _fontSlizeSlider = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                            OutlinedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(
+                                      drawerIndex: 0,
+                                      isThems: true,
+                                      fontType: null,
+                                      onThemeChanged: (context) {},
+                                      indexs: 0,
+                                      fontSize: _fontSlizeSlider,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Font',
+                                style: TextStyle(letterSpacing: 6.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 30.0, top: 5.0),
@@ -274,6 +343,14 @@ class _SettingState extends State<Setting> {
                                                 'Email: Surafel.node@gmail.com',
                                                 style: TextStyle(
                                                   fontSize: 14.0,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Special Tnx: Redet Bayu',
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.red,
                                                 ),
                                               ),
                                               Text("${DateTime.now().year}"),

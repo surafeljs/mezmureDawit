@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -8,18 +7,19 @@ import 'data.dart';
 class Body extends StatefulWidget {
   final int drawerIndex;
   final Axis bodyBool;
-  String? fontTypes;
+  final String? fontTypes;
   final VoidCallback axisHorizontalDirection;
   final VoidCallback axisVerticalDirection;
+  final double? fontSizes;
 
   Body({
     super.key,
     required this.drawerIndex,
-
     required this.bodyBool,
     required this.fontTypes,
     required this.axisVerticalDirection,
     required this.axisHorizontalDirection,
+    required this.fontSizes,
   });
 
   @override
@@ -27,46 +27,39 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  Future<List<Data>> loadMezmureDawit() async {
-    final jsonString = await rootBundle.loadString('assets/data/data.json');
-
-    final List<dynamic> jsonList = jsonDecode(jsonString);
-
-    return jsonList.map((e) => Data.fromJson(e)).toList();
-  }
-
-  String? displayFont;
   late final ScrollController _scrollController;
   int bodyIndex = 0;
   List<Data> mezmure = [];
-  int zz = 0;
+
+  String? displayFont;
+  double? displayFontSize;
+
   @override
   void initState() {
     super.initState();
     bodyIndex = widget.drawerIndex;
-    _scrollController = ScrollController();
+    _scrollController = ScrollController()..addListener(_onScroll);
 
-    _scrollController.addListener(_onScroll);
     _loadData();
-
     _initPrefs();
+    _loadFontSize();
+  }
 
-    print("messsss $bodyIndex");
+  Future<List<Data>> loadMezmureDawit() async {
+    final jsonString = await rootBundle.loadString('assets/data/data.json');
+    final List<dynamic> jsonList = jsonDecode(jsonString);
+    return jsonList.map((e) => Data.fromJson(e)).toList();
   }
 
   void _onScroll() {
     if (!_scrollController.hasClients) return;
-
-    // Approximate item height (adjust if needed)
     const double itemHeight = 250;
-
     final int index = (_scrollController.offset / itemHeight).floor();
 
     if (index != bodyIndex && index >= 0 && index < mezmure.length) {
       setState(() {
         bodyIndex = index;
       });
-
       print('Current bodyIndex: $bodyIndex');
     }
   }
@@ -77,15 +70,42 @@ class _BodyState extends State<Body> {
     setState(() {
       mezmure = data;
     });
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.drawerIndex >= 0 && widget.drawerIndex < mezmure.length) {
-        const double itemHeight = 250.0; // approximate height of each chapter
+        const double itemHeight = 250.0;
         _scrollController.jumpTo(widget.drawerIndex * itemHeight);
-
         setState(() {
           bodyIndex = widget.drawerIndex;
         });
       }
+    });
+  }
+
+  Future<void> _initPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (widget.fontTypes != null && widget.fontTypes!.isNotEmpty) {
+      await prefs.setString('font_keys', widget.fontTypes!);
+    }
+
+    final storedFont = prefs.getString('font_keys') ?? '';
+    setState(() {
+      displayFont = storedFont.isNotEmpty ? storedFont : 'Roboto';
+    });
+  }
+
+  Future<void> _loadFontSize() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (widget.fontSizes != null) {
+      await prefs.setDouble('fontTextSizes', widget.fontSizes!);
+    }
+
+    final storedSize = prefs.getDouble('fontTextSizes') ?? 20;
+    print(storedSize);
+    setState(() {
+      displayFontSize = storedSize;
     });
   }
 
@@ -95,71 +115,56 @@ class _BodyState extends State<Body> {
 
     return [
       for (int i = 0; i < parts.length; i++) ...[
-        TextSpan(text: parts[i]), // normal text
-
+        TextSpan(text: parts[i]),
         if (i != parts.length - 1)
           TextSpan(
             text: keyword,
-            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
           ),
       ],
     ];
   }
 
-  Future<void> _initPrefs() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    if (widget.fontTypes != null && widget.fontTypes!.isNotEmpty) {
-      await prefs.setString('font_key', '${widget.fontTypes}');
-    }
-
-    final String stored = prefs.getString('font_key') ?? '';
-
-    setState(() {
-      displayFont = stored;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: mezmure.length,
       controller: _scrollController,
+      itemCount: mezmure.length,
       itemBuilder: (context, index) {
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 5.0),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20.0, bottom: 10.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    mezmure[index].chapter,
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
-                      wordSpacing: 10.0,
-                      fontFamily: '$displayFont',
-                    ),
-                  ),
+              padding: const EdgeInsets.only(
+                top: 5.0,
+                right: 20.0,
+                bottom: 10.0,
+              ),
+              alignment: Alignment.bottomRight,
+              child: Text(
+                mezmure[index].chapter,
+                style: TextStyle(
+                  fontSize: displayFontSize,
+
+                  fontWeight: FontWeight.bold,
+                  wordSpacing: 10,
+                  fontFamily: displayFont,
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(right: 15.0),
-              child: Divider(indent: 100.0, color: Colors.deepOrange),
-            ),
-            // ✅ Replace normal Text with RichText for highlighted words
+            const Divider(indent: 100.0, color: Colors.deepOrange),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: RichText(
                 text: TextSpan(
                   style: TextStyle(
-                    fontSize: 20.0,
-                    wordSpacing: 2.0,
-                    fontFamily: '$displayFont',
-                    color: Colors.indigo, // default text color
+                    fontSize: displayFontSize,
+                    wordSpacing: 2,
+                    fontFamily: displayFont,
+                    color: Colors.brown,
                   ),
                   children: _highlightEgziabher(mezmure[index].text),
                 ),

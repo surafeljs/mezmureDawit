@@ -52,6 +52,7 @@ class _OrthodoxState extends State<Orthodox> {
 
         onThemeChanged: updateTheme,
         indexs: null,
+        fontSize: null,
       ),
     );
   }
