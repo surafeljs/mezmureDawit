@@ -320,7 +320,7 @@ class _SettingState extends State<Setting> {
                                               CircleAvatar(
                                                 radius: 90,
                                                 backgroundImage: AssetImage(
-                                                  'assets/img/drawerHeaderCover.jpg',
+                                                  'assets/img/splash/Mezmure.png',
                                                 ),
                                                 child: Align(
                                                   alignment:
@@ -346,7 +346,7 @@ class _SettingState extends State<Setting> {
                                                 ),
                                               ),
                                               Text(
-                                                'Special Tnx: Redet Bayu',
+                                                'Special Tnx: Rediet Baye',
                                                 style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.bold,

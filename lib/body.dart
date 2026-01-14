@@ -128,6 +128,9 @@ class _BodyState extends State<Body> {
     ];
   }
 
+  bool visiblity = false;
+  AlignmentGeometry _bottomleft = Alignment.bottomLeft;
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -136,6 +139,7 @@ class _BodyState extends State<Body> {
       itemBuilder: (context, index) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+
           children: [
             Container(
               padding: const EdgeInsets.only(
@@ -147,7 +151,7 @@ class _BodyState extends State<Body> {
               child: Text(
                 mezmure[index].chapter,
                 style: TextStyle(
-                  fontSize: displayFontSize,
+                  fontSize: 25.0,
 
                   fontWeight: FontWeight.bold,
                   wordSpacing: 10,
@@ -167,6 +171,57 @@ class _BodyState extends State<Body> {
                     color: Colors.brown,
                   ),
                   children: _highlightEgziabher(mezmure[index].text),
+                ),
+              ),
+            ),
+            Container(
+              child: AnimatedAlign(
+                duration: Duration(milliseconds: 500),
+                alignment: _bottomleft,
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      visiblity = !visiblity;
+                      _bottomleft = visiblity
+                          ? Alignment.center
+                          : Alignment.bottomLeft;
+                    });
+                  },
+                  child: Icon(
+                    Icons.music_note,
+                    size: 35.0,
+                    color: Colors.deepOrange,
+                  ),
+                ),
+              ),
+            ),
+            AnimatedOpacity(
+              duration: Duration(seconds: 1),
+              opacity: visiblity ? 1.0 : 0.0,
+
+              child: Visibility(
+                visible: visiblity,
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 40.0,
+                  children: [
+                    IconButton.outlined(
+                      onPressed: () {},
+                      icon: Icon(Icons.skip_previous, color: Colors.deepOrange),
+                    ),
+                    IconButton.outlined(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.play_arrow, //Icons.pause
+                        color: Colors.deepOrange,
+                      ),
+                    ),
+                    IconButton.outlined(
+                      onPressed: () {},
+                      icon: Icon(Icons.skip_next, color: Colors.deepOrange),
+                    ),
+                  ],
                 ),
               ),
             ),
