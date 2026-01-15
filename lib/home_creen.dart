@@ -108,9 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               await SharePlus.instance.share(
                 ShareParams(
-                  uri: Uri.parse(
-                    'https://play.google.com/store/apps/details?id=com.example.yourapp',
-                  ),
+                  text: "Thanks for sharing ✅",
+                  // uri: Uri.parse(
+                  //   'https://play.google.com/store/apps/details?id=com.example.yourapp',
+                  // ),
                 ),
               );
             },

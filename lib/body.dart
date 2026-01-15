@@ -157,7 +157,11 @@ class _BodyState extends State<Body> {
                 ),
               ),
             ),
-            const Divider(indent: 100.0, color: Colors.deepOrange),
+            const Divider(
+              indent: 100.0,
+              endIndent: 10.0,
+              color: Colors.deepOrange,
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: RichText(
