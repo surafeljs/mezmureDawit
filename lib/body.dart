@@ -12,7 +12,7 @@ class Body extends StatefulWidget {
   final VoidCallback axisVerticalDirection;
   final double? fontSizes;
 
-  Body({
+  const Body({
     super.key,
     required this.drawerIndex,
     required this.bodyBool,
@@ -60,7 +60,6 @@ class _BodyState extends State<Body> {
       setState(() {
         bodyIndex = index;
       });
-      print('Current bodyIndex: $bodyIndex');
     }
   }
 
@@ -103,7 +102,6 @@ class _BodyState extends State<Body> {
     }
 
     final storedSize = prefs.getDouble('fontTextSizes') ?? 20;
-    print(storedSize);
     setState(() {
       displayFontSize = storedSize;
     });
@@ -174,27 +172,27 @@ class _BodyState extends State<Body> {
                 ),
               ),
             ),
-            Container(
-              child: AnimatedAlign(
-                duration: Duration(milliseconds: 500),
-                alignment: _bottomleft,
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      visiblity = !visiblity;
-                      _bottomleft = visiblity
-                          ? Alignment.center
-                          : Alignment.bottomLeft;
-                    });
-                  },
-                  child: Icon(
-                    Icons.music_note,
-                    size: 35.0,
-                    color: Colors.deepOrange,
-                  ),
+
+            AnimatedAlign(
+              duration: Duration(milliseconds: 500),
+              alignment: _bottomleft,
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    visiblity = !visiblity;
+                    _bottomleft = visiblity
+                        ? Alignment.center
+                        : Alignment.bottomLeft;
+                  });
+                },
+                child: Icon(
+                  Icons.music_note,
+                  size: 35.0,
+                  color: Colors.deepOrange,
                 ),
               ),
             ),
+
             AnimatedOpacity(
               duration: Duration(seconds: 1),
               opacity: visiblity ? 1.0 : 0.0,

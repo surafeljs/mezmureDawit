@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orthodox/Setting.dart';
+import 'package:orthodox/setting.dart';
 import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
 import 'package:share_plus/share_plus.dart';

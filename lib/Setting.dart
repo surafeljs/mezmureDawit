@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:orthodox/home_creen.dart';
 import 'package:orthodox/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -313,56 +312,50 @@ class _SettingState extends State<Setting> {
                                       controller: scrollController,
                                       child: Padding(
                                         padding: const EdgeInsets.all(20.0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          child: Column(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 90,
-                                                backgroundImage: AssetImage(
-                                                  'assets/img/splash/Mezmure.png',
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentGeometry.center,
-                                                ),
-                                              ),
 
-                                              SizedBox(height: 20),
-                                              Text(
-                                                "Developer: Surafel D.",
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                ),
+                                        child: Column(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 90,
+                                              backgroundImage: AssetImage(
+                                                'assets/img/splash/Mezmure.png',
                                               ),
-                                              Text(
-                                                "Phone: 0901158062",
-                                                style: TextStyle(fontSize: 16),
+                                              child: Align(
+                                                alignment:
+                                                    AlignmentGeometry.center,
                                               ),
-                                              Text(
-                                                'Email: Surafel.node@gmail.com',
-                                                style: TextStyle(
-                                                  fontSize: 14.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Special Tnx: Rediet Baye',
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              Text("${DateTime.now().year}"),
+                                            ),
 
-                                              SizedBox(height: 20),
-
-                                              Text(
-                                                "ይህ አፕ በአማርኛ ቋንቋ የተጻፈ የመዝሙር ዳዊት መዝሙሮችን በሙሉ የያዘ ነው።\nበእያንዳንዱ መዝሙር የተሰጠው ጥራት እና ቅርጸት በተለይ ለመንፈሳዊ ጥምረት የተዘጋጀ ነው።\nየመዝሙሩን ቃላት በቀላሉ መንበብ እና ማስታወስ ይቻላል።\nተጠቃሚዎች የተወደዱትን መዝሙሮች በፍጥነት ማስቀመጥ እና በየምድቡ ማደራጀት ይችላሉ።\nአፕው ከፍተኛ ጥራት ያለው መዝሙር ትርጉም ይሰጣል፣ ስለዚህ ማንበብ በቀላሉ እና በተስማሚ ሁኔታ ይሆናል።\nይህ አፕ የመዝሙር ዳዊት ትምህርትን እና መንፈሳዊ ልማድን ለአማርኛ ተከታዮች ቀላል ለማስተዋወቅ የተዘጋጀ ነው።\nእንዲሁም ስም, ምድብ, ወይም መዝሙር ቁጥር በመፈለጊያ ቀላል እና ፈጣን መሆኑን ይሰጣል።",
-                                                style: TextStyle(fontSize: 16),
+                                            SizedBox(height: 20),
+                                            Text(
+                                              "Developer: Surafel D.",
+                                              style: TextStyle(fontSize: 20.0),
+                                            ),
+                                            Text(
+                                              "Phone: 0901158062",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              'Email: Surafel.node@gmail.com',
+                                              style: TextStyle(fontSize: 14.0),
+                                            ),
+                                            Text(
+                                              'Special Tnx: Rediet Baye',
+                                              style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.red,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                            Text("${DateTime.now().year}"),
+
+                                            SizedBox(height: 20),
+
+                                            Text(
+                                              "ይህ አፕ በአማርኛ ቋንቋ የተጻፈ የመዝሙር ዳዊት መዝሙሮችን በሙሉ የያዘ ነው።\nበእያንዳንዱ መዝሙር የተሰጠው ጥራት እና ቅርጸት በተለይ ለመንፈሳዊ ጥምረት የተዘጋጀ ነው።\nየመዝሙሩን ቃላት በቀላሉ መንበብ እና ማስታወስ ይቻላል።\nተጠቃሚዎች የተወደዱትን መዝሙሮች በፍጥነት ማስቀመጥ እና በየምድቡ ማደራጀት ይችላሉ።\nአፕው ከፍተኛ ጥራት ያለው መዝሙር ትርጉም ይሰጣል፣ ስለዚህ ማንበብ በቀላሉ እና በተስማሚ ሁኔታ ይሆናል።\nይህ አፕ የመዝሙር ዳዊት ትምህርትን እና መንፈሳዊ ልማድን ለአማርኛ ተከታዮች ቀላል ለማስተዋወቅ የተዘጋጀ ነው።\nእንዲሁም ስም, ምድብ, ወይም መዝሙር ቁጥር በመፈለጊያ ቀላል እና ፈጣን መሆኑን ይሰጣል።",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     );

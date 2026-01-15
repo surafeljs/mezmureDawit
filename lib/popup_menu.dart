@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orthodox/Setting.dart';
 
 class MoreVert extends StatefulWidget {
   @override
