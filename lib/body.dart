@@ -149,11 +149,11 @@ class _BodyState extends State<Body> {
               child: Text(
                 mezmure[index].chapter,
                 style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 26.0,
 
                   fontWeight: FontWeight.bold,
                   wordSpacing: 10,
-                  fontFamily: displayFont,
+                  fontFamily: displayFont ?? 'EthiopicLessan',
                 ),
               ),
             ),
@@ -165,7 +165,7 @@ class _BodyState extends State<Body> {
                   style: TextStyle(
                     fontSize: displayFontSize,
                     wordSpacing: 2,
-                    fontFamily: displayFont,
+                    fontFamily: displayFont ?? 'EthiopicLessan',
                     color: Colors.brown,
                   ),
                   children: _highlightEgziabher(mezmure[index].text),
