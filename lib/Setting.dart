@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/home_creen.dart';
 import 'package:orthodox/main.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Setting extends StatefulWidget {
@@ -265,10 +266,23 @@ class _SettingState extends State<Setting> {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
+                      padding: const EdgeInsets.only(left: 19.0, top: 5.0),
                       child: SizedBox(
                         height: 50.0,
-                        child: Text('Share', style: TextStyle(fontSize: 20.0)),
+                        child: TextButton(
+                          onPressed: () async {
+                            await SharePlus.instance.share(
+                              ShareParams(text: "Thanks for sharing ✅"),
+                            );
+                          },
+                          child: Text(
+                            'Share',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Padding(

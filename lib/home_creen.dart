@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
   final int? indexs;
   //fontSizes
   final double? fontSize;
+
   const HomeScreen({
     super.key,
     required this.drawerIndex,
@@ -119,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           PopupMenuButton(
-            onSelected: (value) {
+            onSelected: (value) async {
               switch (value) {
                 case 'Setting':
                   Navigator.push(
@@ -131,6 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         axisHorizontalDirections: horizontalDirection,
                       ),
                     ),
+                  );
+                  break;
+                case 'Share':
+
+                  // Directly call async code
+                  await SharePlus.instance.share(
+                    ShareParams(text: "Thanks for sharing ✅"),
                   );
                   break;
 

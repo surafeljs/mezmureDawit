@@ -41,6 +41,8 @@ dependencies:
   file_picker: ^10.3.3
   flutter_rating_bar: ^4.0.1
   flutter_native_splash: ^2.4.7
+  just_audio: ^0.10.5
+
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,8 @@ flutter:
     - assets/img/drawerHeaderCover.jpg
     - assets/img/splash/Mezmure.png
     - assets/data/data.json
+    - assets/audio/song.mp3
+
     
    
   

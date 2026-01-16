@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:just_audio/just_audio.dart';
 import 'package:flutter/services.dart';
 import 'data.dart';
 
@@ -33,7 +34,6 @@ class _BodyState extends State<Body> {
 
   String? displayFont;
   double? displayFontSize;
-
   @override
   void initState() {
     super.initState();
@@ -204,26 +204,166 @@ class _BodyState extends State<Body> {
               child: Visibility(
                 visible: visiblity,
 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 40.0,
-                  children: [
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(Icons.skip_previous, color: Colors.deepOrange),
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return DraggableScrollableSheet(
+                          expand: false,
+
+                          initialChildSize: 0.6,
+                          minChildSize: 0.3,
+                          maxChildSize: 0.7,
+                          builder: (context, ScrollController scrollController) {
+                            return SingleChildScrollView(
+                              controller: scrollController,
+
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(40.0),
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            16,
+                                          ), // roundness
+                                        ),
+                                        elevation: 6,
+
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(
+                                                8.0,
+                                              ),
+                                              child: SizedBox(
+                                                height: 250,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        16,
+                                                      ), // roundness
+                                                  child: Image.asset(
+                                                    'assets/img/drawerHeaderCover.jpg',
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(
+                                                8.0,
+                                              ),
+                                              child: Align(
+                                                alignment:
+                                                    AlignmentGeometry.topLeft,
+
+                                                child: Text('Mezmure'),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(
+                                                8.0,
+                                              ),
+                                              child: Align(
+                                                alignment:
+                                                    AlignmentGeometry.topLeft,
+
+                                                child: Text('Mezmure'),
+                                              ),
+                                            ),
+
+                                            Padding(
+                                              padding: const EdgeInsets.all(
+                                                8.0,
+                                              ),
+                                              child: Align(
+                                                alignment:
+                                                    AlignmentGeometry.center,
+
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  spacing: 40.0,
+                                                  children: [
+                                                    IconButton.outlined(
+                                                      onPressed: () {
+                                                        // _audioPlayer.play();
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.skip_previous,
+                                                        color:
+                                                            Colors.deepOrange,
+                                                      ),
+                                                    ),
+                                                    IconButton.outlined(
+                                                      onPressed: () {},
+                                                      icon: Icon(
+                                                        Icons
+                                                            .play_arrow, //Icons.pause
+                                                        color:
+                                                            Colors.deepOrange,
+                                                      ),
+                                                    ),
+                                                    IconButton.outlined(
+                                                      onPressed: () {},
+                                                      icon: Icon(
+                                                        Icons.skip_next,
+                                                        color:
+                                                            Colors.deepOrange,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 40.0,
+                      children: [
+                        IconButton.outlined(
+                          onPressed: () {
+                            // _audioPlayer.play();
+                          },
+                          icon: Icon(
+                            Icons.skip_previous,
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                        IconButton.outlined(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.play_arrow, //Icons.pause
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                        IconButton.outlined(
+                          onPressed: () {},
+                          icon: Icon(Icons.skip_next, color: Colors.deepOrange),
+                        ),
+                      ],
                     ),
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.play_arrow, //Icons.pause
-                        color: Colors.deepOrange,
-                      ),
-                    ),
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(Icons.skip_next, color: Colors.deepOrange),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
