@@ -297,6 +297,42 @@ class _SettingState extends State<Setting> {
                         height: 50.0,
                         child: GestureDetector(
                           onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AboutDialog(
+                                  applicationIcon: FlutterLogo(),
+                                  applicationLegalese: 'Legalese',
+                                  applicationName: 'Mezmure Dawit',
+                                  applicationVersion: 'v1.0.0',
+                                  children: [
+                                    SizedBox(height: 10),
+                                    Center(child: Text('Mezmure Dawit App.')),
+                                    SizedBox(height: 10),
+
+                                    Center(
+                                      child: Text(
+                                        'Made with ❤️ using Flutter.',
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: Text(
+                            'More Info ',
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: SizedBox(
+                        height: 50.0,
+                        child: GestureDetector(
+                          onTap: () {
                             showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
@@ -363,41 +399,6 @@ class _SettingState extends State<Setting> {
                                 );
                               },
                             );
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       content: Column(
-                            //         spacing: 0.0,
-
-                            //         mainAxisSize: MainAxisSize.min,
-                            //         mainAxisAlignment: MainAxisAlignment.center,
-                            //         children: [
-                            //           ListTile(
-                            //             title: Text('Delevopd by:Surafel D.'),
-                            //             subtitle: Text('Phone : 0901158062'),
-                            //           ),
-
-                            //           ListTile(
-                            //             title: Text('Gmail'),
-                            //             subtitle: Text(
-                            //               'Surafel.node@gmail.com',
-                            //             ),
-                            //           ),
-                            //         ],
-                            //       ),
-
-                            //       actions: [
-                            //         GestureDetector(
-                            //           onTap: () {
-                            //             Navigator.pop(context);
-                            //           },
-                            //           child: Text('Ok'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
                           },
 
                           child: Text(

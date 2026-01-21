@@ -108,7 +108,7 @@ class _BodyState extends State<Body> {
   }
 
   List<TextSpan> _highlightEgziabher(String text) {
-    const keyword = 'እግዚአብሔ';
+    const keyword = 'እግዚአብሔር';
     final parts = text.split(keyword);
 
     return [
@@ -173,56 +173,56 @@ class _BodyState extends State<Body> {
               ),
             ),
 
-            AnimatedAlign(
-              duration: Duration(milliseconds: 500),
-              alignment: _bottomleft,
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    visiblity = !visiblity;
-                    _bottomleft = visiblity
-                        ? Alignment.center
-                        : Alignment.bottomLeft;
-                  });
-                },
-                child: Icon(
-                  Icons.music_note,
-                  size: 35.0,
-                  color: Colors.deepOrange,
-                ),
-              ),
-            ),
+            // AnimatedAlign(
+            //   duration: Duration(milliseconds: 500),
+            //   alignment: _bottomleft,
+            //   child: TextButton(
+            //     onPressed: () {
+            //       setState(() {
+            //         visiblity = !visiblity;
+            //         _bottomleft = visiblity
+            //             ? Alignment.center
+            //             : Alignment.bottomLeft;
+            //       });
+            //     },
+            //     child: Icon(
+            //       Icons.music_note,
+            //       size: 35.0,
+            //       color: Colors.deepOrange,
+            //     ),
+            //   ),
+            // ),
 
-            AnimatedOpacity(
-              duration: Duration(seconds: 1),
-              opacity: visiblity ? 1.0 : 0.0,
+            // AnimatedOpacity(
+            //   duration: Duration(seconds: 1),
+            //   opacity: visiblity ? 1.0 : 0.0,
 
-              child: Visibility(
-                visible: visiblity,
+            //   child: Visibility(
+            //     visible: visiblity,
 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 40.0,
-                  children: [
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(Icons.skip_previous, color: Colors.deepOrange),
-                    ),
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.play_arrow, //Icons.pause
-                        color: Colors.deepOrange,
-                      ),
-                    ),
-                    IconButton.outlined(
-                      onPressed: () {},
-                      icon: Icon(Icons.skip_next, color: Colors.deepOrange),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       spacing: 40.0,
+            //       children: [
+            //         IconButton.outlined(
+            //           onPressed: () {},
+            //           icon: Icon(Icons.skip_previous, color: Colors.deepOrange),
+            //         ),
+            //         IconButton.outlined(
+            //           onPressed: () {},
+            //           icon: Icon(
+            //             Icons.play_arrow, //Icons.pause
+            //             color: Colors.deepOrange,
+            //           ),
+            //         ),
+            //         IconButton.outlined(
+            //           onPressed: () {},
+            //           icon: Icon(Icons.skip_next, color: Colors.deepOrange),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         );
       },
