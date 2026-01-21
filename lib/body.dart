@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:just_audio/just_audio.dart';
 import 'package:flutter/services.dart';
 import 'data.dart';
 
@@ -33,7 +34,6 @@ class _BodyState extends State<Body> {
 
   String? displayFont;
   double? displayFontSize;
-
   @override
   void initState() {
     super.initState();
@@ -126,9 +126,6 @@ class _BodyState extends State<Body> {
     ];
   }
 
-  bool visiblity = false;
-  AlignmentGeometry _bottomleft = Alignment.bottomLeft;
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -149,15 +146,19 @@ class _BodyState extends State<Body> {
               child: Text(
                 mezmure[index].chapter,
                 style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 26.0,
 
                   fontWeight: FontWeight.bold,
                   wordSpacing: 10,
-                  fontFamily: displayFont,
+                  fontFamily: displayFont ?? 'EthiopicLessan',
                 ),
               ),
             ),
-            const Divider(indent: 100.0, color: Colors.deepOrange),
+            const Divider(
+              indent: 100.0,
+              endIndent: 10.0,
+              color: Colors.deepOrange,
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: RichText(
@@ -165,64 +166,13 @@ class _BodyState extends State<Body> {
                   style: TextStyle(
                     fontSize: displayFontSize,
                     wordSpacing: 2,
-                    fontFamily: displayFont,
+                    fontFamily: displayFont ?? 'EthiopicLessan',
                     color: Colors.brown,
                   ),
                   children: _highlightEgziabher(mezmure[index].text),
                 ),
               ),
             ),
-
-            // AnimatedAlign(
-            //   duration: Duration(milliseconds: 500),
-            //   alignment: _bottomleft,
-            //   child: TextButton(
-            //     onPressed: () {
-            //       setState(() {
-            //         visiblity = !visiblity;
-            //         _bottomleft = visiblity
-            //             ? Alignment.center
-            //             : Alignment.bottomLeft;
-            //       });
-            //     },
-            //     child: Icon(
-            //       Icons.music_note,
-            //       size: 35.0,
-            //       color: Colors.deepOrange,
-            //     ),
-            //   ),
-            // ),
-
-            // AnimatedOpacity(
-            //   duration: Duration(seconds: 1),
-            //   opacity: visiblity ? 1.0 : 0.0,
-
-            //   child: Visibility(
-            //     visible: visiblity,
-
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       spacing: 40.0,
-            //       children: [
-            //         IconButton.outlined(
-            //           onPressed: () {},
-            //           icon: Icon(Icons.skip_previous, color: Colors.deepOrange),
-            //         ),
-            //         IconButton.outlined(
-            //           onPressed: () {},
-            //           icon: Icon(
-            //             Icons.play_arrow, //Icons.pause
-            //             color: Colors.deepOrange,
-            //           ),
-            //         ),
-            //         IconButton.outlined(
-            //           onPressed: () {},
-            //           icon: Icon(Icons.skip_next, color: Colors.deepOrange),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         );
       },

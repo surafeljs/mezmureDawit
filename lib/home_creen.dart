@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/audio_playlist.dart';
 import 'package:orthodox/setting.dart';
 import 'package:orthodox/body.dart';
 import 'package:orthodox/drawer.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
   final int? indexs;
   //fontSizes
   final double? fontSize;
+
   const HomeScreen({
     super.key,
     required this.drawerIndex,
@@ -90,7 +92,24 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(style: TextStyle(fontWeight: FontWeight.bold), 'መዝሙረ ዳዊት'),
+
         actions: [
+          Padding(
+            padding: EdgeInsetsGeometry.all(8),
+
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Playlist()),
+                );
+              },
+              icon: Hero(
+                tag: 'audio_playlist',
+                child: Icon(Icons.library_music),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsetsGeometry.all(8),
 
@@ -108,9 +127,10 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               await SharePlus.instance.share(
                 ShareParams(
-                  uri: Uri.parse(
-                    'https://play.google.com/store/apps/details?id=com.example.yourapp',
-                  ),
+                  text: "Thanks for sharing ✅",
+                  // uri: Uri.parse(
+                  //   'https://play.google.com/store/apps/details?id=com.example.yourapp',
+                  // ),
                 ),
               );
             },
@@ -118,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           PopupMenuButton(
-            onSelected: (value) {
+            onSelected: (value) async {
               switch (value) {
                 case 'Setting':
                   Navigator.push(
@@ -130,6 +150,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         axisHorizontalDirections: horizontalDirection,
                       ),
                     ),
+                  );
+                  break;
+                case 'Share':
+
+                  // Directly call async code
+                  await SharePlus.instance.share(
+                    ShareParams(text: "Thanks for sharing ✅"),
                   );
                   break;
 

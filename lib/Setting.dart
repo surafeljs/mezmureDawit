@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/home_creen.dart';
 import 'package:orthodox/main.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Setting extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SettingState extends State<Setting> {
     'Abay',
   ];
   String? _selectedFont;
-  double _fontSlizeSlider = 20;
+  double _fontSlizeSlider = 22;
   @override
   void initState() {
     super.initState();
@@ -56,7 +57,7 @@ class _SettingState extends State<Setting> {
     final prefs = await SharedPreferences.getInstance();
 
     // getDouble returns null if key doesn't exist, so fallback to 20
-    final savedSize = prefs.getDouble('fontTextSizes') ?? 20.0;
+    final savedSize = prefs.getDouble('fontTextSizes') ?? 22.0;
 
     setState(() {
       _fontSlizeSlider = savedSize;
@@ -221,6 +222,7 @@ class _SettingState extends State<Setting> {
                               padding: const EdgeInsets.only(
                                 left: 30.0,
                                 top: 5.0,
+                                right: 5.0,
                               ),
                               child: SizedBox(
                                 height: 70.0,
@@ -264,10 +266,23 @@ class _SettingState extends State<Setting> {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
+                      padding: const EdgeInsets.only(left: 19.0, top: 5.0),
                       child: SizedBox(
                         height: 50.0,
-                        child: Text('Share', style: TextStyle(fontSize: 20.0)),
+                        child: TextButton(
+                          onPressed: () async {
+                            await SharePlus.instance.share(
+                              ShareParams(text: "Thanks for sharing ✅"),
+                            );
+                          },
+                          child: Text(
+                            'Share',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
