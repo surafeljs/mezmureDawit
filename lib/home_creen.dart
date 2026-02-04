@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:orthodox/audio_playlist.dart';
 import 'package:orthodox/setting.dart';
 import 'package:orthodox/body.dart';
@@ -97,18 +98,18 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsetsGeometry.all(8),
 
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Playlist()),
-                );
-              },
-              icon: Hero(
-                tag: 'audio_playlist',
-                child: Icon(Icons.library_music),
-              ),
-            ),
+            // child: IconButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => Playlist()),
+            //     );
+            //   },
+            //   icon: Hero(
+            //     tag: 'audio_playlist',
+            //     child: Icon(Icons.library_music),
+            //   ),
+            // ),
           ),
           Padding(
             padding: EdgeInsetsGeometry.all(8),
@@ -238,6 +239,36 @@ class _HomeScreenState extends State<HomeScreen> {
         axisVerticalDirection: verticalDirection,
         axisHorizontalDirection: horizontalDirection,
         fontSizes: widget.fontSize,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return DraggableScrollableSheet(
+                initialChildSize: 0.5,
+                minChildSize: 0.3,
+                maxChildSize: 0.9,
+
+                expand: false,
+                builder: (context, scrollController) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(25),
+                    ),
+                    child: Container(
+                      color: Colors.white,
+                      child: Playlist(scrollController: scrollController),
+                    ),
+                  );
+                },
+              );
+            },
+          );
+        },
+        child: Icon(Icons.play_arrow),
       ),
     );
   }
