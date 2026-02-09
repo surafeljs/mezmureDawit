@@ -20,7 +20,6 @@ class _DrawersState extends State<Drawers> {
                 repeat: ImageRepeat.noRepeat,
 
                 fit: BoxFit.cover,
-                // Makes the image fill the header
               ),
             ),
             child: Container(), // You can add overlay widgets here if needed

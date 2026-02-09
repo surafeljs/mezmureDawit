@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/ex.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
@@ -126,6 +127,27 @@ class _BodyState extends State<Body> {
     ];
   }
 
+  int index = 0;
+  // List<Widget> images = [
+  //   Image.network(
+  //     fit: BoxFit.cover,
+  //     "https://images.pexels.com/photos/35452785/pexels-photo-35452785.jpeg",
+  //     key: ValueKey('1'),
+  //   ),
+  //   Image.network(
+  //     fit: BoxFit.cover,
+
+  //     "https://images.pexels.com/photos/12274675/pexels-photo-12274675.jpeg",
+  //     key: ValueKey('2'),
+  //   ),
+  //   Image.network(
+  //     fit: BoxFit.cover,
+
+  //     "https://images.pexels.com/photos/12969380/pexels-photo-12969380.jpeg",
+  //     key: ValueKey('3'),
+  //   ),
+  // ];
+  bool dd = true;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -143,14 +165,22 @@ class _BodyState extends State<Body> {
                 bottom: 10.0,
               ),
               alignment: Alignment.bottomRight,
-              child: Text(
-                mezmure[index].chapter,
-                style: TextStyle(
-                  fontSize: 26.0,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Ex()),
+                  );
+                },
+                child: Text(
+                  mezmure[index].chapter,
+                  style: TextStyle(
+                    fontSize: 26.0,
 
-                  fontWeight: FontWeight.bold,
-                  wordSpacing: 10,
-                  fontFamily: displayFont ?? 'EthiopicLessan',
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 10,
+                    fontFamily: displayFont ?? 'EthiopicLessan',
+                  ),
                 ),
               ),
             ),

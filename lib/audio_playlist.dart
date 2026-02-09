@@ -86,6 +86,7 @@ class _PlaylistState extends State<Playlist> {
     super.dispose();
   }
 
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +173,9 @@ class _PlaylistState extends State<Playlist> {
                       return IconButton(
                         onPressed: () {
                           playing ? _player.pause() : _player.play();
+                          setState(() {
+                            counter++;
+                          });
                         },
                         icon: Container(
                           decoration: BoxDecoration(
@@ -179,10 +183,23 @@ class _PlaylistState extends State<Playlist> {
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
 
-                          child: Icon(
-                            playing ? Icons.pause : Icons.play_arrow,
-                            size: 50,
-                            color: playing ? Colors.orange : Colors.white,
+                          child: AnimatedSwitcher(
+                            duration: Duration(milliseconds: 300),
+                            transitionBuilder: (child, animation) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: ScaleTransition(
+                                  scale: animation,
+                                  child: child,
+                                ),
+                              );
+                            },
+                            child: Icon(
+                              key: ValueKey<int>(counter),
+                              playing ? Icons.pause : Icons.play_arrow,
+                              size: 50,
+                              color: playing ? Colors.orange : Colors.white,
+                            ),
                           ),
                         ),
                       );
