@@ -88,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setDate(Axis.vertical);
   }
 
+  int countre = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,22 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(style: TextStyle(fontWeight: FontWeight.bold), 'መዝሙረ ዳዊት'),
 
         actions: [
-          Padding(
-            padding: EdgeInsetsGeometry.all(8),
-
-            // child: IconButton(
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => Playlist()),
-            //     );
-            //   },
-            //   icon: Hero(
-            //     tag: 'audio_playlist',
-            //     child: Icon(Icons.library_music),
-            //   ),
-            // ),
-          ),
+          Padding(padding: EdgeInsetsGeometry.all(8)),
           Padding(
             padding: EdgeInsetsGeometry.all(8),
 
@@ -118,9 +104,22 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 setState(() {
                   widget.onThemeChanged(!widget.isThems);
+                  countre++;
                 });
               },
-              icon: Icon(widget.isThems ? Icons.light_mode : Icons.dark_mode),
+              icon: AnimatedSwitcher(
+                duration: Duration(milliseconds: 300),
+                transitionBuilder: (child, animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: ScaleTransition(scale: animation, child: child),
+                  );
+                },
+                child: Icon(
+                  key: ValueKey<int>(countre),
+                  widget.isThems ? Icons.light_mode : Icons.dark_mode,
+                ),
+              ),
             ),
           ),
 
