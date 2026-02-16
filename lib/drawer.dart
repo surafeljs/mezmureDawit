@@ -8,7 +8,7 @@ class Drawers extends StatefulWidget {
 
 class _DrawersState extends State<Drawers> {
   int drawerIndex = 0;
-  final initialexpanded = true;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -26,8 +26,6 @@ class _DrawersState extends State<Drawers> {
             child: Container(), // You can add overlay widgets here if needed
           ),
           ExpansionTile(
-            initiallyExpanded: initialexpanded,
-
             title: Text('ሰኞ '),
             leading: Icon(Icons.import_contacts_outlined),
 
@@ -451,52 +449,102 @@ class _DrawersState extends State<Drawers> {
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 11'),
+                    title: Text('መዝሙር 61'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 12'),
+                    title: Text('መዝሙር 62'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 13'),
+                    title: Text('መዝሙር 63'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 14'),
+                    title: Text('መዝሙር 64'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 15'),
+                    title: Text('መዝሙር 65'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 16'),
+                    title: Text('መዝሙር 66'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 17'),
+                    title: Text('መዝሙር 67'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 18'),
+                    title: Text('መዝሙር 68'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 19'),
+                    title: Text('መዝሙር 69'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 20'),
+                    title: Text('መዝሙር 70'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 72'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 73'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 74'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 75'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 76'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 76'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 77'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 78'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 79'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 80'),
                   ),
                   SizedBox(height: 20.0),
                 ],
@@ -514,52 +562,152 @@ class _DrawersState extends State<Drawers> {
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 11'),
+                    title: Text('መዝሙር 81'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 12'),
+                    title: Text('መዝሙር 82'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 13'),
+                    title: Text('መዝሙር 83'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 14'),
+                    title: Text('መዝሙር 84'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 15'),
+                    title: Text('መዝሙር 85'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 16'),
+                    title: Text('መዝሙር 66'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 17'),
+                    title: Text('መዝሙር 87'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 18'),
+                    title: Text('መዝሙር 88'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 19'),
+                    title: Text('መዝሙር 89'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 20'),
+                    title: Text('መዝሙር 90'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 91'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 92'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 93'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 94'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 95'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 96'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 97'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 98'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 99'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 100'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 101'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 102'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 103'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 104'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 105'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 106'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 107'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 108'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 109'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 110'),
                   ),
                   SizedBox(height: 20.0),
                 ],
@@ -577,52 +725,102 @@ class _DrawersState extends State<Drawers> {
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 11'),
+                    title: Text('መዝሙር 111'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 12'),
+                    title: Text('መዝሙር 112'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 13'),
+                    title: Text('መዝሙር 113'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 14'),
+                    title: Text('መዝሙር 114'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 15'),
+                    title: Text('መዝሙር 115'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 16'),
+                    title: Text('መዝሙር 116'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 17'),
+                    title: Text('መዝሙር 117'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 18'),
+                    title: Text('መዝሙር 118'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 19'),
+                    title: Text('መዝሙር 119'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 20'),
+                    title: Text('መዝሙር 120'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 121'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 122'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 123'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 124'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 125'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 126'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 127'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 128'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 129'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 130'),
                   ),
                   SizedBox(height: 20.0),
                 ],
@@ -640,52 +838,102 @@ class _DrawersState extends State<Drawers> {
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 11'),
+                    title: Text('መዝሙር 131'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 12'),
+                    title: Text('መዝሙር 132'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 13'),
+                    title: Text('መዝሙር 133'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 14'),
+                    title: Text('መዝሙር 134'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 15'),
+                    title: Text('መዝሙር 135'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 16'),
+                    title: Text('መዝሙር 136'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 17'),
+                    title: Text('መዝሙር 137'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 18'),
+                    title: Text('መዝሙር 138'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 19'),
+                    title: Text('መዝሙር 139'),
                   ),
                   SizedBox(height: 20.0),
                   ListTile(
                     leading: Icon(Icons.radio_button_checked),
-                    title: Text('መዝሙር 20'),
+                    title: Text('መዝሙር 140'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 141'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 142'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 143'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 144'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 145'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 146'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 147'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 148'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 149'),
+                  ),
+                  SizedBox(height: 20.0),
+                  ListTile(
+                    leading: Icon(Icons.radio_button_checked),
+                    title: Text('መዝሙር 150'),
                   ),
                   SizedBox(height: 20.0),
                 ],
@@ -705,7 +953,7 @@ class _DrawersState extends State<Drawers> {
                 children: [
                   Text("Version 1.0.0"),
                   SizedBox(height: 6),
-                  Text("© 2026 My App"),
+                  Text("© 2026 መዝሙረ ዳዊት"),
                 ],
               ),
             ),

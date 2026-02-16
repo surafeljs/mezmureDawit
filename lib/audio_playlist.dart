@@ -31,27 +31,27 @@ class _PlaylistState extends State<Playlist> {
     Song(
       title: 'መዝሙረ ዳዊት 31 - 60',
       url:
-          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1769172486/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_1-30__256k_1_oudsje.mp3',
+          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1771234547/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit-_%E1%88%9B%E1%8A%AD%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_31-_60___1_cnvjsq.mp3',
     ),
     Song(
       title: 'መዝሙረ ዳዊት 61 - 80',
       url:
-          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1769172486/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_1-30__256k_1_oudsje.mp3',
+          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1771234573/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit__-_%E1%88%A8%E1%89%A1%E1%8B%95__%E1%88%98%E1%8B%9D_61-80__1_m9kgds.mp3',
     ),
     Song(
       title: 'መዝሙረ ዳዊት 81 - 110',
       url:
-          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1769172486/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_1-30__256k_1_oudsje.mp3',
+          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1771235178/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%90%E1%88%99%E1%88%B5__%E1%88%98%E1%8B%9D_81-110__1_neza6f.mp3',
     ),
     Song(
       title: 'መዝሙረ ዳዊት 111 - 130',
       url:
-          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1769172486/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_1-30__256k_1_oudsje.mp3',
+          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1771234887/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-__%E1%8B%93%E1%88%AD%E1%89%A5__%E1%88%98%E1%8B%9D_111-130__1_grktz2.mp3',
     ),
     Song(
       title: 'መዝሙረ ዳዊት 131 - 150',
       url:
-          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1769172486/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%88%B0%E1%8A%9E__%E1%88%98%E1%8B%9D_1-30__256k_1_oudsje.mp3',
+          'https://res.cloudinary.com/djmvcfeyr/video/upload/v1771234596/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8_%E1%8B%B3%E1%8B%8A%E1%89%B5_Mezmure_Dawit_-_%E1%89%85%E1%8B%B3%E1%88%9C__%E1%88%98%E1%8B%9D_131-150__1_oqjoi9.mp3',
     ),
   ];
 
