@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orthodox/ex.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
@@ -166,12 +166,7 @@ class _BodyState extends State<Body> {
               ),
               alignment: Alignment.bottomRight,
               child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Ex()),
-                  );
-                },
+                onTap: () {},
                 child: Text(
                   mezmure[index].chapter,
                   style: TextStyle(
