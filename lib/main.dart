@@ -41,7 +41,43 @@ class _OrthodoxState extends State<Orthodox> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: isThems ? ThemeData.dark() : ThemeData.light(),
+      theme: ThemeData(
+        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.black)),
+        scaffoldBackgroundColor: Colors.white,
+        drawerTheme: DrawerThemeData(backgroundColor: Colors.white),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.amber,
+        ),
+        expansionTileTheme: ExpansionTileThemeData(
+          collapsedIconColor: Colors.deepOrangeAccent,
+          collapsedTextColor: Colors.black,
+          iconColor: Colors.green,
+        ),
+      ),
+
+      darkTheme: ThemeData(
+        drawerTheme: DrawerThemeData(backgroundColor: Colors.black),
+
+        expansionTileTheme: ExpansionTileThemeData(
+          textColor: Colors.white,
+          collapsedIconColor: Colors.deepOrangeAccent,
+          collapsedTextColor: Colors.white,
+          iconColor: Colors.amberAccent,
+        ),
+
+        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+        scaffoldBackgroundColor: Colors.black12,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.deepOrangeAccent,
+        ),
+        popupMenuTheme: PopupMenuThemeData(color: Colors.black),
+        listTileTheme: ListTileThemeData(
+          textColor: Colors.white,
+          iconColor: Colors.orange,
+        ),
+      ),
+
+      themeMode: isThems ? ThemeMode.dark : ThemeMode.light,
 
       debugShowCheckedModeBanner: false,
 
