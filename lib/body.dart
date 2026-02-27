@@ -150,7 +150,6 @@ class _BodyState extends State<Body> {
   //   ),
   // ];
   bool dd = true;
-  String? selectedTexts;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -199,7 +198,6 @@ class _BodyState extends State<Body> {
                 onSelectionChanged: (selection, cause) {
                   final fullText = mezmure[index].text;
 
-                  print(fullText.substring(selection.start, selection.end));
                   if (selection.start != selection.end) {
                     final selectedText = fullText.substring(
                       selection.start,
