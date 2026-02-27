@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/crude.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/services.dart';
 import 'data.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Body extends StatefulWidget {
   final int drawerIndex;
@@ -148,6 +150,7 @@ class _BodyState extends State<Body> {
   //   ),
   // ];
   bool dd = true;
+  String? selectedTexts;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -166,7 +169,12 @@ class _BodyState extends State<Body> {
               ),
               alignment: Alignment.bottomRight,
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CrudExample()),
+                  );
+                },
                 child: Text(
                   mezmure[index].chapter,
                   style: TextStyle(
@@ -186,14 +194,39 @@ class _BodyState extends State<Body> {
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(
+              child: SelectableText.rich(
+                selectionColor: const Color.fromARGB(170, 255, 214, 64),
+                onSelectionChanged: (selection, cause) {
+                  final fullText = mezmure[index].text;
+
+                  print(fullText.substring(selection.start, selection.end));
+                  if (selection.start != selection.end) {
+                    final selectedText = fullText.substring(
+                      selection.start,
+                      selection.end,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(selectedText),
+                        action: SnackBarAction(
+                          label: 'Share',
+                          onPressed: () async {
+                            await SharePlus.instance.share(
+                              ShareParams(text: selectedText),
+                            );
+                          },
+                        ),
+                      ),
+                    );
+                  }
+                },
+                TextSpan(
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontSize: displayFontSize,
                     wordSpacing: 2,
                     fontFamily: displayFont ?? 'EthiopicLessan',
-                    color: Colors.brown,
                   ),
+
                   children: _highlightEgziabher(mezmure[index].text),
                 ),
               ),

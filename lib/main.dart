@@ -41,6 +41,7 @@ class _OrthodoxState extends State<Orthodox> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'መዝሙረ ዳዊት',
       theme: ThemeData(
         textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.black)),
         scaffoldBackgroundColor: Colors.white,
@@ -57,6 +58,7 @@ class _OrthodoxState extends State<Orthodox> {
 
       darkTheme: ThemeData(
         drawerTheme: DrawerThemeData(backgroundColor: Colors.black),
+        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white)),
 
         expansionTileTheme: ExpansionTileThemeData(
           textColor: Colors.white,
@@ -65,7 +67,6 @@ class _OrthodoxState extends State<Orthodox> {
           iconColor: Colors.amberAccent,
         ),
 
-        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white)),
         scaffoldBackgroundColor: Colors.black12,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Colors.deepOrangeAccent,
