@@ -168,12 +168,12 @@ class _BodyState extends State<Body> {
               ),
               alignment: Alignment.bottomRight,
               child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CrudExample()),
-                  );
-                },
+                // onTap: () {
+                //   Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => CrudExample()),
+                //   );
+                // },
                 child: Text(
                   mezmure[index].chapter,
                   style: TextStyle(
