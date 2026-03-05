@@ -93,8 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('መዝሙረ ዳዊት'),
-
+        title: Text(style: TextStyle(fontWeight: FontWeight.bold), 'መዝሙረ ዳዊት'),
         actions: [
           Padding(
             padding: EdgeInsetsGeometry.all(6),

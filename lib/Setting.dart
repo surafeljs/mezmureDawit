@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/home_creen.dart';
-import 'package:orthodox/main.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Setting extends StatefulWidget {
   final Axis bodyBools;
-
   final VoidCallback axisHorizontalDirections;
   final VoidCallback axisVerticalDirections;
 
   const Setting({
     super.key,
     required this.bodyBools,
-
     required this.axisVerticalDirections,
     required this.axisHorizontalDirections,
   });
@@ -23,7 +20,7 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  List<String> fontType = [
+  final List<String> fontType = [
     'EthiopicLessan',
     'EthiopicSadiss',
     'FreeSerif',
@@ -45,8 +42,10 @@ class _SettingState extends State<Setting> {
     'Desta',
     'Abay',
   ];
+
   String? _selectedFont;
-  double _fontSlizeSlider = 15;
+  double _fontSizeSlider = 15;
+
   @override
   void initState() {
     super.initState();
@@ -55,13 +54,16 @@ class _SettingState extends State<Setting> {
 
   Future<void> _loadFontSize() async {
     final prefs = await SharedPreferences.getInstance();
-
-    // getDouble returns null if key doesn't exist, so fallback to 20
     final savedSize = prefs.getDouble('fontTextSizes') ?? 15.0;
 
     setState(() {
-      _fontSlizeSlider = savedSize;
+      _fontSizeSlider = savedSize;
     });
+  }
+
+  Future<void> _saveFontSize(double size) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('fontTextSizes', size);
   }
 
   @override
@@ -70,353 +72,163 @@ class _SettingState extends State<Setting> {
       appBar: AppBar(
         backgroundColor: Colors.orange[400],
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Setting',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            letterSpacing: 3.0,
-            fontSize: 23.0,
+            letterSpacing: 3,
+            fontSize: 23,
           ),
         ),
       ),
       body: SafeArea(
-        bottom: false,
-        child: Column(
+        child: ListView(
+          padding: const EdgeInsets.all(20),
           children: [
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0, top: 50.0),
-                      child: SizedBox(
-                        height: 50.0,
-                        child: GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              animationStyle: AnimationStyle(
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.bounceOut,
-                                reverseCurve: Curves.bounceIn,
-                              ),
-                              useSafeArea: true,
-
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('የገጽ አቀማመጥ'),
-
-                                  content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      ListTile(
-                                        title: InkWell(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(25),
-                                          ),
-                                          onTap:
-                                              widget.axisHorizontalDirections,
-
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              'ወደ ጎን ',
-                                              style: TextStyle(fontSize: 18.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      ListTile(
-                                        title: InkWell(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(25),
-                                          ),
-                                          onTap: widget.axisVerticalDirections,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              'ከላይ ወደታች ',
-                                              style: TextStyle(fontSize: 18.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                  actions: [
-                                    GestureDetector(
-                                      child: Text(
-                                        'Ok',
-                                        style: TextStyle(fontSize: 18.0),
-                                      ),
-
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Orthodox(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            'የገጽ አቀማመጥ',
-                            style: TextStyle(fontSize: 20.0),
+            /// Page Direction
+            ListTile(
+              title: const Text('የገጽ አቀማመጥ', style: TextStyle(fontSize: 20)),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('የገጽ አቀማመጥ'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            title: const Text('ወደ ጎን'),
+                            onTap: widget.axisHorizontalDirections,
                           ),
-                        ),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0, top: 5.0),
-                          child: SizedBox(
-                            height: 70.0,
-                            child: DropdownButton(
-                              hint: Text('Font Type'),
-                              value: _selectedFont,
-
-                              items: fontType
-                                  .map(
-                                    (f) => DropdownMenuItem<String>(
-                                      value: f,
-                                      child: Text(f),
-                                    ),
-                                  )
-                                  .toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  _selectedFont = value;
-                                });
-
-                                if (value != null) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HomeScreen(
-                                        drawerIndex: 0,
-                                        isThems: true,
-                                        fontType: value,
-
-                                        onThemeChanged: (v) {},
-                                        indexs: null,
-                                        fontSize: null,
-                                      ),
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
+                          ListTile(
+                            title: const Text('ከላይ ወደታች'),
+                            onTap: widget.axisVerticalDirections,
                           ),
-                        ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
 
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 30.0,
-                                top: 5.0,
-                                right: 5.0,
-                              ),
-                              child: SizedBox(
-                                height: 70.0,
-                                child: Slider(
-                                  value: _fontSlizeSlider,
+            const SizedBox(height: 20),
 
-                                  min: 10.0,
-                                  max: 60.0,
-                                  divisions: 50,
-                                  label: _fontSlizeSlider.toStringAsFixed(0),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _fontSlizeSlider = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-                            OutlinedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HomeScreen(
-                                      drawerIndex: 0,
-                                      isThems: true,
-                                      fontType: null,
-                                      onThemeChanged: (context) {},
-                                      indexs: 0,
-                                      fontSize: _fontSlizeSlider,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                'Font',
-                                style: TextStyle(letterSpacing: 6.0),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0, top: 5.0),
-                      child: SizedBox(
-                        height: 50.0,
-                        child: GestureDetector(
-                          onTap: () async {
-                            await SharePlus.instance.share(
-                              ShareParams(text: "Thanks for sharing ✅"),
-                            );
-                          },
-                          child: Text(
-                            'Share',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
+            /// Font Dropdown
+            DropdownButtonFormField<String>(
+              value: _selectedFont,
+              hint: const Text('Select Font Type'),
+              items: fontType
+                  .map((f) => DropdownMenuItem(value: f, child: Text(f)))
+                  .toList(),
+              onChanged: (value) {
+                setState(() {
+                  _selectedFont = value;
+                });
+
+                if (value != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen(
+                        drawerIndex: 0,
+                        isThems: true,
+                        fontType: value,
+                        onThemeChanged: (_) {},
+                        indexs: null,
+                        fontSize: null,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: SizedBox(
-                        height: 50.0,
+                  );
+                }
+              },
+            ),
 
-                        child: Text(
-                          'Rate us',
-                          style: TextStyle(fontSize: 20.0),
-                        ),
-                      ),
+            const SizedBox(height: 30),
+
+            /// Font Size Slider
+            const Text(
+              "Font Size",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+
+            Slider(
+              value: _fontSizeSlider,
+              min: 10,
+              max: 60,
+              divisions: 50,
+              label: _fontSizeSlider.toStringAsFixed(0),
+              onChanged: (value) {
+                setState(() {
+                  _fontSizeSlider = value;
+                });
+              },
+              onChangeEnd: (value) {
+                _saveFontSize(value);
+              },
+            ),
+
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => HomeScreen(
+                      drawerIndex: 0,
+                      isThems: true,
+                      fontType: null,
+                      onThemeChanged: (_) {},
+                      indexs: 0,
+                      fontSize: _fontSizeSlider,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: SizedBox(
-                        height: 50.0,
-                        child: Text(
-                          'More apps ',
-                          style: TextStyle(fontSize: 20.0),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: SizedBox(
-                        height: 50.0,
-                        child: GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AboutDialog(
-                                  applicationIcon: FlutterLogo(),
-                                  applicationLegalese: 'Legalese',
-                                  applicationName: 'Mezmure Dawit',
-                                  applicationVersion: 'v1.0.0',
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            'More Info ',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: SizedBox(
-                        height: 50.0,
-                        child: GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                              isScrollControlled: true,
-                              context: context,
-                              builder: (context) {
-                                return DraggableScrollableSheet(
-                                  expand: false,
+                  ),
+                );
+              },
+              child: const Text('Apply Font'),
+            ),
 
-                                  initialChildSize: 0.6,
-                                  minChildSize: 0.3,
-                                  maxChildSize: 0.9,
-                                  builder: (context, scrollController) {
-                                    return SingleChildScrollView(
-                                      controller: scrollController,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(20.0),
+            const SizedBox(height: 30),
 
-                                        child: Column(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 90,
-                                              backgroundImage: AssetImage(
-                                                'assets/img/splash/Mezmure.png',
-                                              ),
-                                              child: Align(
-                                                alignment:
-                                                    AlignmentGeometry.center,
-                                              ),
-                                            ),
+            /// Share
+            // ListTile(
+            //   title: const Text('Share', style: TextStyle(fontSize: 20)),
+            //   onTap: () async {
 
-                                            SizedBox(height: 20),
-                                            Text(
-                                              "Developer: Surafel D.",
-                                              style: TextStyle(fontSize: 20.0),
-                                            ),
-                                            Text(
-                                              "Phone: 0901158062",
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              'Email: Surafel.node@gmail.com',
-                                              style: TextStyle(fontSize: 14.0),
-                                            ),
-                                            Text(
-                                              'Special Tnx: Rediet Baye',
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                            Text("${DateTime.now().year}"),
+            //     await Share.share("Thanks for sharing ✅");
+            //   },
+            // ),
 
-                                            SizedBox(height: 20),
+            /// Rate
+            const ListTile(
+              title: Text('Rate us', style: TextStyle(fontSize: 20)),
+            ),
 
-                                            Text(
-                                              "ይህ አፕ በአማርኛ ቋንቋ የተጻፈ የመዝሙር ዳዊት መዝሙሮችን በሙሉ የያዘ ነው።\nበእያንዳንዱ መዝሙር የተሰጠው ጥራት እና ቅርጸት በተለይ ለመንፈሳዊ ጥምረት የተዘጋጀ ነው።\nየመዝሙሩን ቃላት በቀላሉ መንበብ እና ማስታወስ ይቻላል።\nተጠቃሚዎች የተወደዱትን መዝሙሮች በፍጥነት ማስቀመጥ እና በየምድቡ ማደራጀት ይችላሉ።\nአፕው ከፍተኛ ጥራት ያለው መዝሙር ትርጉም ይሰጣል፣ ስለዚህ ማንበብ በቀላሉ እና በተስማሚ ሁኔታ ይሆናል።\nይህ አፕ የመዝሙር ዳዊት ትምህርትን እና መንፈሳዊ ልማድን ለአማርኛ ተከታዮች ቀላል ለማስተዋወቅ የተዘጋጀ ነው።\nእንዲሁም ስም, ምድብ, ወይም መዝሙር ቁጥር በመፈለጊያ ቀላል እና ፈጣን መሆኑን ይሰጣል።",
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
+            /// More Apps
+            const ListTile(
+              title: Text('More apps', style: TextStyle(fontSize: 20)),
+            ),
 
-                          child: Text(
-                            'About',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            /// About Dialog
+            ListTile(
+              title: const Text('About', style: TextStyle(fontSize: 20)),
+              onTap: () {
+                showAboutDialog(
+                  context: context,
+                  applicationName: "Mezmure Dawit",
+                  applicationVersion: "v1.0.0",
+                  applicationIcon: const FlutterLogo(),
+                );
+              },
+            ),
+
+            const SizedBox(height: 40),
+
+            Center(
+              child: Text(
+                "© ${DateTime.now().year} Surafel D.",
+                style: const TextStyle(fontSize: 14),
+              ),
             ),
           ],
         ),
