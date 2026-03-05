@@ -16,29 +16,25 @@ class _DrawersState extends State<Drawers> {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withValues(alpha: 0.6),
-                  Colors.transparent,
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
+              // gradient: LinearGradient(
+              //   colors: [
+              //     Colors.black.withValues(alpha: 0.6),
+              //     Colors.transparent,
+              //   ],
+              //   begin: Alignment.bottomCenter,
+              //   end: Alignment.topCenter,
+              // ),
               image: DecorationImage(
-                image: AssetImage('assets/img/drawerHeaderCover.jpg'),
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withValues(alpha: 0.3),
+                  BlendMode.darken,
+                ),
+                image: AssetImage('assets/img/OIP.webp'),
                 repeat: ImageRepeat.noRepeat,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
             ),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                'መዝሙረ ዳዊት',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(fontSize: 20.0),
-              ),
-            ),
+            child: Align(alignment: Alignment.bottomLeft, child: Container()),
           ),
           ExpansionTile(
             title: Text('ሰኞ '),
