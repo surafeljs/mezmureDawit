@@ -174,6 +174,11 @@ class _SettingState extends State<Setting> {
             ),
 
             OutlinedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(
+                  Colors.amberAccent.withValues(alpha: 0.6),
+                ),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -189,7 +194,12 @@ class _SettingState extends State<Setting> {
                   ),
                 );
               },
-              child: const Text('Apply Font'),
+              child: Center(
+                child: const Text(
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  'Apply Font',
+                ),
+              ),
             ),
 
             const SizedBox(height: 30),

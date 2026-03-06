@@ -59,7 +59,11 @@ class _OrthodoxState extends State<Orthodox> {
       darkTheme: ThemeData(
         drawerTheme: DrawerThemeData(backgroundColor: Colors.black),
         textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white)),
-
+        dropdownMenuTheme: DropdownMenuThemeData(
+          menuStyle: MenuStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.yellow),
+          ),
+        ),
         expansionTileTheme: ExpansionTileThemeData(
           textColor: Colors.white,
           collapsedIconColor: Colors.deepOrangeAccent,
