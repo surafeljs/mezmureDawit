@@ -116,7 +116,10 @@ class _SettingState extends State<Setting> {
             const SizedBox(height: 20),
 
             /// Font Dropdown
-            DropdownButtonFormField<String>(
+            SizedBox(
+              child: DropdownButton<String>(
+                isExpanded: true,
+
               value: _selectedFont,
               hint: const Text('Select Font Type'),
               items: fontType
