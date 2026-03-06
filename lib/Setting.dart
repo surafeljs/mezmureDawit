@@ -158,6 +158,9 @@ class _SettingState extends State<Setting> {
             ),
 
             Slider(
+              activeColor: Colors.amber,
+              overlayColor: WidgetStatePropertyAll(Colors.orange),
+
               value: _fontSizeSlider,
               min: 10,
               max: 60,
@@ -175,9 +178,7 @@ class _SettingState extends State<Setting> {
 
             OutlinedButton(
               style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(
-                  Colors.amberAccent.withValues(alpha: 0.6),
-                ),
+                foregroundColor: WidgetStatePropertyAll(Colors.orange),
               ),
               onPressed: () {
                 Navigator.push(
@@ -204,16 +205,15 @@ class _SettingState extends State<Setting> {
 
             const SizedBox(height: 30),
 
-            /// Share
-            // ListTile(
-            //   title: const Text('Share', style: TextStyle(fontSize: 20)),
-            //   onTap: () async {
+            ListTile(
+              title: const Text('Share', style: TextStyle(fontSize: 20)),
+              onTap: () async {
+                await SharePlus.instance.share(
+                  ShareParams(text: "Thanks for sharing ✅"),
+                );
+              },
+            ),
 
-            //     await Share.share("Thanks for sharing ✅");
-            //   },
-            // ),
-
-            /// Rate
             const ListTile(
               title: Text('Rate us', style: TextStyle(fontSize: 20)),
             ),
