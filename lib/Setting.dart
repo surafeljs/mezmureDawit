@@ -120,32 +120,33 @@ class _SettingState extends State<Setting> {
               child: DropdownButton<String>(
                 isExpanded: true,
 
-              value: _selectedFont,
-              hint: const Text('Select Font Type'),
-              items: fontType
-                  .map((f) => DropdownMenuItem(value: f, child: Text(f)))
-                  .toList(),
-              onChanged: (value) {
-                setState(() {
-                  _selectedFont = value;
-                });
+                value: _selectedFont,
+                hint: const Text('Select Font Type'),
+                items: fontType
+                    .map((f) => DropdownMenuItem(value: f, child: Text(f)))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedFont = value;
+                  });
 
-                if (value != null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen(
-                        drawerIndex: 0,
-                        isThems: true,
-                        fontType: value,
-                        onThemeChanged: (_) {},
-                        indexs: null,
-                        fontSize: null,
+                  if (value != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HomeScreen(
+                          drawerIndex: 0,
+                          isThems: true,
+                          fontType: value,
+                          onThemeChanged: (_) {},
+                          indexs: null,
+                          fontSize: null,
+                        ),
                       ),
-                    ),
-                  );
-                }
-              },
+                    );
+                  }
+                },
+              ),
             ),
 
             const SizedBox(height: 30),

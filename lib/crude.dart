@@ -14,16 +14,12 @@ class _CrudExampleState extends State<CrudExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          Colors.black.withValues(alpha: 0.5),
-          BlendMode.darken,
-        ),
-        child: SizedBox.expand(
-          child: Image.asset(
-            'assets/img/drawerHeaderCover.jpg',
-            fit: BoxFit.cover,
-          ),
+      body: Container(
+        color: Colors.red,
+
+        child: SizedOverflowBox(
+          size: Size(200, 150),
+          child: Container(color: Colors.yellow, width: 250.0, height: 30.0),
         ),
       ),
     );
