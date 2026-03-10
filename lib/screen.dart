@@ -13,63 +13,69 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IntroductionScreen(
-        pages: [
-          PageViewModel(
-            image: Image.asset(
-              width: 400,
-              fit: BoxFit.cover,
-              'assets/134009274249421277.jpg',
-            ),
-            title: 'Surafel',
-            body: 'Hello world',
-            footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
-          ),
-          PageViewModel(
-            image: Image.asset('assets/134009274249421277.jpg'),
-            title: 'Surafel',
-            body: 'Hello world',
-            footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
-          ),
-          PageViewModel(
-            image: Image.asset('assets/134009274249421277.jpg'),
-            title: 'Surafel',
-            body: 'Hello world',
-            footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
-          ),
-          PageViewModel(
-            image: Image.asset(
-              fit: BoxFit.cover,
-
-              'assets/134009274249421277.jpg',
-            ),
-            title: 'Surafel',
-            body: 'Hello world',
-            footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
-          ),
+      body: PageView(
+        children: [
+          Container(color: Colors.red),
+          Container(color: Colors.pink),
         ],
-
-        dotsDecorator: DotsDecorator(
-          activeSize: Size.square(20),
-          activeColor: Colors.amber,
-          size: Size(12, 10),
-        ),
-        showNextButton: true,
-        next: Text('next'),
-        showBackButton: true,
-        back: Text('back'),
-        showDoneButton: true,
-        done: Text('done'),
-        autoScrollDuration: 3000,
-        showSkipButton: true,
-        skip: Text('skip'),
-        onDone: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MezmureDawit()),
-          );
-        },
       ),
+      // body: IntroductionScreen(
+      //   pages: [
+      //     PageViewModel(
+      //       image: Image.asset(
+      //         width: 400,
+      //         fit: BoxFit.cover,
+      //         'assets/134009274249421277.jpg',
+      //       ),
+      //       title: 'Surafel',
+      //       body: 'Hello world',
+      //       footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
+      //     ),
+      //     PageViewModel(
+      //       image: Image.asset('assets/134009274249421277.jpg'),
+      //       title: 'Surafel',
+      //       body: 'Hello world',
+      //       footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
+      //     ),
+      //     PageViewModel(
+      //       image: Image.asset('assets/134009274249421277.jpg'),
+      //       title: 'Surafel',
+      //       body: 'Hello world',
+      //       footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
+      //     ),
+      //     PageViewModel(
+      //       image: Image.asset(
+      //         fit: BoxFit.cover,
+
+      //         'assets/134009274249421277.jpg',
+      //       ),
+      //       title: 'Surafel',
+      //       body: 'Hello world',
+      //       footer: TextButton(onPressed: () {}, child: Text('Lest `go')),
+      //     ),
+      //   ],
+
+      //   dotsDecorator: DotsDecorator(
+      //     activeSize: Size.square(20),
+      //     activeColor: Colors.amber,
+      //     size: Size(12, 10),
+      //   ),
+      //   showNextButton: true,
+      //   next: Text('next'),
+      //   showBackButton: true,
+      //   back: Text('back'),
+      //   showDoneButton: true,
+      //   done: Text('done'),
+      //   autoScrollDuration: 3000,
+      //   showSkipButton: true,
+      //   skip: Text('skip'),
+      //   onDone: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => MezmureDawit()),
+      //     );
+      //   },
+      // ),
     );
   }
 }
