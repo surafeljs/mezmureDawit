@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:orthodox/body.dart';
+import 'package:orthodox/ex.dart';
 import 'package:orthodox/home_creen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -41,6 +43,8 @@ class _OrthodoxState extends State<Orthodox> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {'/ex': (context) => EX1()},
+
       title: 'መዝሙረ ዳዊት',
       theme: ThemeData(
         textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.black)),

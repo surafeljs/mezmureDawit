@@ -10,6 +10,13 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 10));
+    Navigator.pushNamed(context, '/ex', arguments: 'hello world');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
@@ -35,12 +42,11 @@ class _FirstScreenState extends State<FirstScreen> {
                   ),
                 ),
                 Spacer(),
-
-                // Loading Text
                 LoadingAnimationWidget.dotsTriangle(
                   color: Colors.red,
                   size: 40,
                 ),
+                // Loading Text
                 SizedBox(height: 60.0),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),

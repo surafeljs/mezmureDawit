@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orthodox/crude.dart';
-import 'package:orthodox/first_screen.dart';
 import 'package:orthodox/screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -171,10 +170,7 @@ class _BodyState extends State<Body> {
               alignment: Alignment.bottomRight,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FirstScreen()),
-                  );
+                  Navigator.pushNamed(context, '/ex', arguments: 'hello world');
                 },
                 child: Text(
                   mezmure[index].chapter,
